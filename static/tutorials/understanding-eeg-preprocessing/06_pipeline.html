@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>The whole EEG pipeline</title>
+    <script type="module" crossorigin src="./assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="./assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="./assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.11\"\n# dependencies = [\"marimo\", \"matplotlib==3.10.8\", \"numpy==2.4.3\", \"scipy==1.17.1\"]\n# \n# [tool.marimo.display]\n# theme = \"light\"\n# \n# [tool.marimo.export]\n# lock_kind = \"observed\"\n# ///\n\nimport marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\", app_title=\"The whole EEG pipeline\")\n\n\n@app.cell(hide_code=True)\ndef _():\n    import sys\n    import time\n    import types\n\n    import marimo as mo\n    import matplotlib.pyplot as plt\n    import numpy as np\n    from scipy import signal\n\n    plt.rcParams.update({\n        \"figure.dpi\": 110, \"font.size\": 9, \"axes.spines.top\": False,\n        \"axes.spines.right\": False,\n    })\n    return mo, np, plt, signal, sys, time, types\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Module 6: The whole pipeline\n\n    The earlier modules changed one step at a time. Here you put the steps together. The\n    page starts from the raw recording, with every step switched off, and you build your own\n    pipeline by switching steps on in the sidebar.\n\n    The grey lines show a **recommended pipeline** for this recording:\n\n    - **Filter:** a 1 Hz high-pass, an 80 Hz low-pass and the 50 Hz notch.\n    - **ICA:** the blink and saccade components removed.\n    - **Bad channels:** the channels marked as bad are dropped, then rebuilt from the\n      channels around them (interpolation).\n    - **Bad trials:** the 51 trials marked as bad are rejected.\n    - **Reference:** the average reference.\n\n    It's one sensible way to clean this recording, not the only right answer. If your choices\n    differ, think about why, and whether you could justify them.\n\n    The blue lines show your pipeline. When a step is switched off, nothing is done for it:\n    for example, with **Bad trials** off, every trial goes into the average.\n\n    /// note | If the page is slow\n    Everything on this page runs inside your web browser, so the first load can take a minute\n    or two. If it feels slow, close other applications and browser tabs, such as music\n    players and video calls, then reload the page.\n    ///\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\nasync def _(mo, sys, time, types):\n    async def bootstrap():\n        \"\"\"Load the shared code, public/eegteach.py: marimo's export doesn't bundle local modules.\"\"\"\n        path = mo.notebook_location() / \"public\" / \"eegteach.py\"\n        if sys.platform == \"emscripten\":\n            from pyodide.http import pyfetch\n            code = await (await pyfetch(str(path))).string()\n        else:\n            code = path.read_text()\n        module = types.ModuleType(\"eegteach\")\n        sys.modules[\"eegteach\"] = module\n        exec(compile(code, \"eegteach.py\", \"exec\"), module.__dict__)\n        return module\n\n    _start = time.perf_counter()\n    et = await bootstrap()\n    recording = et.Recording(await et.load(mo, \"example-data.npz\"), await et.load(mo, \"filters.npz\"))\n    load_seconds = time.perf_counter() - _start\n    return et, recording\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    high_pass = mo.ui.dropdown(\n        options={\"Off\": None, \"0.1 Hz\": 0.1, \"0.5 Hz\": 0.5, \"1 Hz\": 1.0, \"2 Hz\": 2.0,\n                 \"5 Hz\": 5.0},\n        value=\"Off\", label=\"High-pass\")\n    low_pass = mo.ui.dropdown(\n        options={\"Off\": None, \"80 Hz\": 80.0, \"40 Hz\": 40.0, \"30 Hz\": 30.0, \"20 Hz\": 20.0,\n                 \"10 Hz\": 10.0},\n        value=\"Off\", label=\"Low-pass\")\n    notch = mo.ui.switch(label=\"50 Hz notch\")\n    ica = mo.ui.switch(label=\"Remove blink and saccade\")\n    bad_channels = mo.ui.switch(label=\"Drop and rebuild bad channels\")\n    bad_trials = mo.ui.switch(label=\"Reject bad trials\")\n    reference = mo.ui.radio(options=[\"None\", \"Average\", \"Mastoids (P9 and P10)\", \"CPz\"],\n                            value=\"None\")\n    return bad_channels, bad_trials, high_pass, ica, low_pass, notch, reference\n\n\n@app.cell(hide_code=True)\ndef _(\n    bad_channels,\n    bad_trials,\n    high_pass,\n    ica,\n    low_pass,\n    mo,\n    notch,\n    reference,\n):\n    mo.sidebar([mo.vstack([\n        mo.md(\"### Your pipeline\"),\n        mo.md(\"**1. Filter**\"), high_pass, low_pass, notch,\n        mo.md(\"**2. ICA**\"), ica,\n        mo.md(\"**3. Bad channels**\"), bad_channels,\n        mo.md(\"**4. Bad trials**\"), bad_trials,\n        mo.md(\"**5. Reference**\"), reference,\n        mo.md(\"Grey: the recommended pipeline. Blue: yours.\"),\n    ], gap=0.5)])\n    return\n\n\n@app.cell(hide_code=True)\ndef _(et, np, recording):\n    SFREQ = recording.sfreq\n    FILE_CHANNELS = list(recording.channels)\n    ERP_CHANNELS = list(et.POSTERIOR)\n    TRACE_CHANNELS = {\"Fp1\": \"above the left eye\", \"Fz\": \"front of the head\",\n                      \"Cz\": \"top of the head\", \"O1\": \"back of the head\"}\n    _a = recording.arrays\n    INTERP = [str(c) for c in _a[\"interp_channels\"]]\n    WINDOW = int(_a[\"ica_window_start\"])          # module 2's ten seconds of blinks\n    ALL_CUES = _a[\"cues\"][recording.complete(_a[\"cues\"])]\n\n    # Every step is linear, so each output channel is a weighted sum of the same basis rows:\n    # the file's channels, the blink and saccade time courses, and `common` (what the file's\n    # reference subtracted). A pipeline is then just a weight matrix, and filtering, which acts\n    # on each row over time, can be applied to the basis once per filter setting.\n    BASIS = np.vstack([recording.raw(FILE_CHANNELS), recording.sources([0, 4]),\n                       _a[\"common\"][None, :]]).astype(np.float32)\n\n    def pipeline_weights(use_ica, use_bad_channels, ref):\n        \"\"\"(output channel names, weights over the basis rows) for one pipeline.\"\"\"\n        n = len(FILE_CHANNELS)\n        w = np.zeros((n, n + 3))\n        w[:, :n] = np.eye(n)\n        w[:, n + 2] = 1.0                                   # the recording as made\n        if use_ica:\n            w[:, n:n + 2] -= recording.patterns[:, [0, 4]]\n        names = list(FILE_CHANNELS)\n        if use_bad_channels:\n            good = [FILE_CHANNELS.index(c) for c in recording.good]\n            rebuilt = _a[\"interp_matrix\"].astype(np.float64) @ w[good]\n            for i, c in enumerate(INTERP):\n                if c in names:\n                    w[names.index(c)] = rebuilt[i]\n            extra = [i for i, c in enumerate(INTERP) if c not in names]\n            w = np.vstack([w, rebuilt[extra]])\n            names += [INTERP[i] for i in extra]\n        if ref == \"Average\":\n            w = w - w.mean(axis=0, keepdims=True)\n        elif ref == \"Mastoids (P9 and P10)\":\n            w = w - w[[names.index(\"P9\"), names.index(\"P10\")]].mean(axis=0, keepdims=True)\n        elif ref == \"CPz\":\n            w = w - w[[names.index(\"CPz\")]]\n        return names, w\n\n    def summaries(basis):\n        \"\"\"What the plots need from a filtered basis: the trace window, and each basis row's\n        ERP over the clean trials and over every trial.\"\"\"\n        window = basis[:, WINDOW:WINDOW + int(10 * SFREQ)].copy()\n        erps = {}\n        for label, cues in ((\"clean\", recording.clean_cues), (\"all\", ALL_CUES)):\n            time_, trials = zip(*(recording.epochs(row, cues) for row in basis))\n            erps[label] = np.stack([t.mean(axis=0) for t in trials])\n        return window, erps, time_[0]\n\n    return (\n        BASIS,\n        ERP_CHANNELS,\n        SFREQ,\n        TRACE_CHANNELS,\n        pipeline_weights,\n        summaries,\n    )\n\n\n@app.cell(hide_code=True)\ndef _(\n    BASIS,\n    ERP_CHANNELS,\n    SFREQ,\n    TRACE_CHANNELS,\n    pipeline_weights,\n    recording,\n    signal,\n    summaries,\n):\n    # The recommended pipeline: stage 4's settings. Computed once.\n    _basis = recording.filter(BASIS, [recording.kernel(1.0, 80.0), recording.kernels[\"notch\"]])\n    _names, _w = pipeline_weights(True, True, \"Average\")\n    _window, _erps, erp_time = summaries(_basis)\n    _post = _w[[_names.index(c) for c in ERP_CHANNELS]].mean(axis=0)\n    grey = {\n        \"trace\": _w[[_names.index(c) for c in TRACE_CHANNELS]] @ _window,\n        \"erp\": _post @ _erps[\"clean\"],\n        \"spectrum\": signal.welch(_post @ _basis, SFREQ, nperseg=int(2 * SFREQ)),\n    }\n    del _basis\n    return erp_time, grey\n\n\n@app.cell(hide_code=True)\ndef _(BASIS, high_pass, low_pass, notch, recording, summaries, time):\n    # Re-filters the basis only when a filter setting changes.\n    _start = time.perf_counter()\n    _kernels = []\n    if high_pass.value is not None or low_pass.value is not None:\n        _kernels.append(recording.kernel(high_pass.value, low_pass.value))\n    if notch.value:\n        _kernels.append(recording.kernels[\"notch\"])\n    filtered = recording.filter(BASIS, _kernels)\n    window, basis_erps, _ = summaries(filtered)\n    filter_seconds = time.perf_counter() - _start\n    return basis_erps, filtered, window\n\n\n@app.cell(hide_code=True)\ndef _(\n    ERP_CHANNELS,\n    SFREQ,\n    TRACE_CHANNELS,\n    bad_channels,\n    bad_trials,\n    basis_erps,\n    filtered,\n    ica,\n    pipeline_weights,\n    reference,\n    signal,\n    window,\n):\n    _names, _w = pipeline_weights(ica.value, bad_channels.value, reference.value)\n    _post = _w[[_names.index(c) for c in ERP_CHANNELS]].mean(axis=0)\n    blue = {\n        \"trace\": _w[[_names.index(c) for c in TRACE_CHANNELS]] @ window,\n        \"erp\": _post @ basis_erps[\"clean\" if bad_trials.value else \"all\"],\n        \"spectrum\": signal.welch((_post @ filtered).astype(\"float32\"), SFREQ,\n                                 nperseg=int(2 * SFREQ)),\n    }\n    return (blue,)\n\n\n@app.cell(hide_code=True)\ndef _(TRACE_CHANNELS, mo):\n    _where = \", \".join(f\"**{name}** ({place})\" for name, place in TRACE_CHANNELS.items())\n    mo.md(f\"\"\"\n    ## 1. The recording over time\n\n    Ten seconds of the recording at {_where}: the stretch from module 2, with several blinks.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(SFREQ, TRACE_CHANNELS, blue, et, grey, mo, np, plt):\n    _time = np.arange(grey[\"trace\"].shape[1]) / SFREQ\n    _fig, _axes = et.plot_traces(plt, _time, list(TRACE_CHANNELS), grey[\"trace\"],\n                                 blue[\"trace\"], height=1.3)\n    _axes[-1].set_xlabel(\"Time (s)\")\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(ERP_CHANNELS, mo):\n    mo.md(f\"\"\"\n    ## 2. The spectrum\n\n    The spectrum of the signal at the back of the head ({\", \".join(ERP_CHANNELS)}, averaged),\n    across the whole recording.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(blue, et, grey, mo, plt):\n    _freqs, _before = grey[\"spectrum\"]\n    _fig, _ax = et.plot_spectrum(plt, _freqs, _before, blue[\"spectrum\"][1],\n                                 labels=(\"Recommended\", \"Yours\"))\n    _keep = (_freqs \u003E 0) \u0026 (_freqs \u003C= 60)\n    _ax.set_ylim(_before[_keep].min() / 100, max(_before[_keep].max(),\n                                                  blue[\"spectrum\"][1][_keep].max()) * 3)\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(ERP_CHANNELS, mo):\n    mo.md(f\"\"\"\n    ## 3. The ERP\n\n    The average of the trials at the back of the head ({\", \".join(ERP_CHANNELS)}), lined up\n    on the moment the object appeared. Pz is back in this average: here, the bad-channel\n    step rebuilds it rather than leaving it out.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(bad_trials, blue, erp_time, et, grey, mo, plt):\n    _fig, _ = et.plot_erp(plt, erp_time, grey[\"erp\"], blue[\"erp\"],\n                          labels=(\"Recommended (69 trials)\",\n                                  \"Yours (69 trials)\" if bad_trials.value\n                                  else \"Yours (every trial)\"))\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion({\n        \"Predict, then try: which single step brings your ERP closest to the grey line?\": mo.md(\n            \"Start with every step off, switch on one step, look, and switch it off again. \"\n            \"None of them does it alone: each step on its own leaves the ERP about as far \"\n            \"from the grey line as the raw recording. The steps work together, and the ERP \"\n            \"only takes shape once several of them are on.\"),\n        \"Try this: match the recommended pipeline\": mo.md(\n            \"Set the filter to 1 Hz and 80 Hz with the notch on, switch on ICA, bad channels \"\n            \"and bad trials, and choose the average reference. The blue lines then lie on \"\n            \"the grey ones.\"),\n        \"Which step matters most for this ERP?\": mo.md(\n            \"Match the recommended pipeline, then switch off one step at a time. For this \"\n            \"recording, the reference matters most: without it, the ERP changes by up to \"\n            \"about 11 \u00b5V. ICA comes next, at up to about 8 \u00b5V, because the blinks line up \"\n            \"with the trials. Leaving out trial rejection or the filter changes it by up to \"\n            \"about 2\u20133 \u00b5V, and the bad channels by less than 0.5 \u00b5V. Another recording could \"\n            \"rank the steps differently.\"),\n        \"Why doesn't rejecting bad trials change the spectrum?\": mo.md(\n            \"The spectrum here covers the whole recording, not just the trials, so leaving \"\n            \"trials out of the average doesn't touch it. Each step changes some views and \"\n            \"not others.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ---\n    [\u2190 Module 5: Re-referencing](05_reference.html) \u00b7 [All modules](index.html)\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%22marimo%22%2C%20%22matplotlib%3D%3D3.10.8%22%2C%20%22numpy%3D%3D2.4.3%22%2C%20%22scipy%3D%3D1.17.1%22%5D%0A%23%20%0A%23%20%5Btool.marimo.display%5D%0A%23%20theme%20%3D%20%22light%22%0A%23%20%0A%23%20%5Btool.marimo.export%5D%0A%23%20lock_kind%20%3D%20%22observed%22%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22%2C%20app_title%3D%22The%20whole%20EEG%20pipeline%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_()%3A%0A%20%20%20%20import%20sys%0A%20%20%20%20import%20time%0A%20%20%20%20import%20types%0A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20from%20scipy%20import%20signal%0A%0A%20%20%20%20plt.rcParams.update(%7B%0A%20%20%20%20%20%20%20%20%22figure.dpi%22%3A%20110%2C%20%22font.size%22%3A%209%2C%20%22axes.spines.top%22%3A%20False%2C%0A%20%20%20%20%20%20%20%20%22axes.spines.right%22%3A%20False%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%20mo%2C%20np%2C%20plt%2C%20signal%2C%20sys%2C%20time%2C%20types%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Module%206%3A%20The%20whole%20pipeline%0A%0A%20%20%20%20The%20earlier%20modules%20changed%20one%20step%20at%20a%20time.%20Here%20you%20put%20the%20steps%20together.%20The%0A%20%20%20%20page%20starts%20from%20the%20raw%20recording%2C%20with%20every%20step%20switched%20off%2C%20and%20you%20build%20your%20own%0A%20%20%20%20pipeline%20by%20switching%20steps%20on%20in%20the%20sidebar.%0A%0A%20%20%20%20The%20grey%20lines%20show%20a%20**recommended%20pipeline**%20for%20this%20recording%3A%0A%0A%20%20%20%20-%20**Filter%3A**%20a%201%20Hz%20high-pass%2C%20an%2080%20Hz%20low-pass%20and%20the%2050%20Hz%20notch.%0A%20%20%20%20-%20**ICA%3A**%20the%20blink%20and%20saccade%20components%20removed.%0A%20%20%20%20-%20**Bad%20channels%3A**%20the%20channels%20marked%20as%20bad%20are%20dropped%2C%20then%20rebuilt%20from%20the%0A%20%20%20%20%20%20channels%20around%20them%20(interpolation).%0A%20%20%20%20-%20**Bad%20trials%3A**%20the%2051%20trials%20marked%20as%20bad%20are%20rejected.%0A%20%20%20%20-%20**Reference%3A**%20the%20average%20reference.%0A%0A%20%20%20%20It's%20one%20sensible%20way%20to%20clean%20this%20recording%2C%20not%20the%20only%20right%20answer.%20If%20your%20choices%0A%20%20%20%20differ%2C%20think%20about%20why%2C%20and%20whether%20you%20could%20justify%20them.%0A%0A%20%20%20%20The%20blue%20lines%20show%20your%20pipeline.%20When%20a%20step%20is%20switched%20off%2C%20nothing%20is%20done%20for%20it%3A%0A%20%20%20%20for%20example%2C%20with%20**Bad%20trials**%20off%2C%20every%20trial%20goes%20into%20the%20average.%0A%0A%20%20%20%20%2F%2F%2F%20note%20%7C%20If%20the%20page%20is%20slow%0A%20%20%20%20Everything%20on%20this%20page%20runs%20inside%20your%20web%20browser%2C%20so%20the%20first%20load%20can%20take%20a%20minute%0A%20%20%20%20or%20two.%20If%20it%20feels%20slow%2C%20close%20other%20applications%20and%20browser%20tabs%2C%20such%20as%20music%0A%20%20%20%20players%20and%20video%20calls%2C%20then%20reload%20the%20page.%0A%20%20%20%20%2F%2F%2F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Aasync%20def%20_(mo%2C%20sys%2C%20time%2C%20types)%3A%0A%20%20%20%20async%20def%20bootstrap()%3A%0A%20%20%20%20%20%20%20%20%22%22%22Load%20the%20shared%20code%2C%20public%2Feegteach.py%3A%20marimo's%20export%20doesn't%20bundle%20local%20modules.%22%22%22%0A%20%20%20%20%20%20%20%20path%20%3D%20mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22eegteach.py%22%0A%20%20%20%20%20%20%20%20if%20sys.platform%20%3D%3D%20%22emscripten%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20pyfetch%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20await%20(await%20pyfetch(str(path))).string()%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20path.read_text()%0A%20%20%20%20%20%20%20%20module%20%3D%20types.ModuleType(%22eegteach%22)%0A%20%20%20%20%20%20%20%20sys.modules%5B%22eegteach%22%5D%20%3D%20module%0A%20%20%20%20%20%20%20%20exec(compile(code%2C%20%22eegteach.py%22%2C%20%22exec%22)%2C%20module.__dict__)%0A%20%20%20%20%20%20%20%20return%20module%0A%0A%20%20%20%20_start%20%3D%20time.perf_counter()%0A%20%20%20%20et%20%3D%20await%20bootstrap()%0A%20%20%20%20recording%20%3D%20et.Recording(await%20et.load(mo%2C%20%22example-data.npz%22)%2C%20await%20et.load(mo%2C%20%22filters.npz%22))%0A%20%20%20%20load_seconds%20%3D%20time.perf_counter()%20-%20_start%0A%20%20%20%20return%20et%2C%20recording%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20high_pass%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%7B%22Off%22%3A%20None%2C%20%220.1%20Hz%22%3A%200.1%2C%20%220.5%20Hz%22%3A%200.5%2C%20%221%20Hz%22%3A%201.0%2C%20%222%20Hz%22%3A%202.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%225%20Hz%22%3A%205.0%7D%2C%0A%20%20%20%20%20%20%20%20value%3D%22Off%22%2C%20label%3D%22High-pass%22)%0A%20%20%20%20low_pass%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%7B%22Off%22%3A%20None%2C%20%2280%20Hz%22%3A%2080.0%2C%20%2240%20Hz%22%3A%2040.0%2C%20%2230%20Hz%22%3A%2030.0%2C%20%2220%20Hz%22%3A%2020.0%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%2210%20Hz%22%3A%2010.0%7D%2C%0A%20%20%20%20%20%20%20%20value%3D%22Off%22%2C%20label%3D%22Low-pass%22)%0A%20%20%20%20notch%20%3D%20mo.ui.switch(label%3D%2250%20Hz%20notch%22)%0A%20%20%20%20ica%20%3D%20mo.ui.switch(label%3D%22Remove%20blink%20and%20saccade%22)%0A%20%20%20%20bad_channels%20%3D%20mo.ui.switch(label%3D%22Drop%20and%20rebuild%20bad%20channels%22)%0A%20%20%20%20bad_trials%20%3D%20mo.ui.switch(label%3D%22Reject%20bad%20trials%22)%0A%20%20%20%20reference%20%3D%20mo.ui.radio(options%3D%5B%22None%22%2C%20%22Average%22%2C%20%22Mastoids%20(P9%20and%20P10)%22%2C%20%22CPz%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20value%3D%22None%22)%0A%20%20%20%20return%20bad_channels%2C%20bad_trials%2C%20high_pass%2C%20ica%2C%20low_pass%2C%20notch%2C%20reference%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20bad_channels%2C%0A%20%20%20%20bad_trials%2C%0A%20%20%20%20high_pass%2C%0A%20%20%20%20ica%2C%0A%20%20%20%20low_pass%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20notch%2C%0A%20%20%20%20reference%2C%0A)%3A%0A%20%20%20%20mo.sidebar(%5Bmo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Your%20pipeline%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**1.%20Filter**%22)%2C%20high_pass%2C%20low_pass%2C%20notch%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**2.%20ICA**%22)%2C%20ica%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**3.%20Bad%20channels**%22)%2C%20bad_channels%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**4.%20Bad%20trials**%22)%2C%20bad_trials%2C%0A%20%20%20%20%20%20%20%20mo.md(%22**5.%20Reference**%22)%2C%20reference%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Grey%3A%20the%20recommended%20pipeline.%20Blue%3A%20yours.%22)%2C%0A%20%20%20%20%5D%2C%20gap%3D0.5)%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(et%2C%20np%2C%20recording)%3A%0A%20%20%20%20SFREQ%20%3D%20recording.sfreq%0A%20%20%20%20FILE_CHANNELS%20%3D%20list(recording.channels)%0A%20%20%20%20ERP_CHANNELS%20%3D%20list(et.POSTERIOR)%0A%20%20%20%20TRACE_CHANNELS%20%3D%20%7B%22Fp1%22%3A%20%22above%20the%20left%20eye%22%2C%20%22Fz%22%3A%20%22front%20of%20the%20head%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Cz%22%3A%20%22top%20of%20the%20head%22%2C%20%22O1%22%3A%20%22back%20of%20the%20head%22%7D%0A%20%20%20%20_a%20%3D%20recording.arrays%0A%20%20%20%20INTERP%20%3D%20%5Bstr(c)%20for%20c%20in%20_a%5B%22interp_channels%22%5D%5D%0A%20%20%20%20WINDOW%20%3D%20int(_a%5B%22ica_window_start%22%5D)%20%20%20%20%20%20%20%20%20%20%23%20module%202's%20ten%20seconds%20of%20blinks%0A%20%20%20%20ALL_CUES%20%3D%20_a%5B%22cues%22%5D%5Brecording.complete(_a%5B%22cues%22%5D)%5D%0A%0A%20%20%20%20%23%20Every%20step%20is%20linear%2C%20so%20each%20output%20channel%20is%20a%20weighted%20sum%20of%20the%20same%20basis%20rows%3A%0A%20%20%20%20%23%20the%20file's%20channels%2C%20the%20blink%20and%20saccade%20time%20courses%2C%20and%20%60common%60%20(what%20the%20file's%0A%20%20%20%20%23%20reference%20subtracted).%20A%20pipeline%20is%20then%20just%20a%20weight%20matrix%2C%20and%20filtering%2C%20which%20acts%0A%20%20%20%20%23%20on%20each%20row%20over%20time%2C%20can%20be%20applied%20to%20the%20basis%20once%20per%20filter%20setting.%0A%20%20%20%20BASIS%20%3D%20np.vstack(%5Brecording.raw(FILE_CHANNELS)%2C%20recording.sources(%5B0%2C%204%5D)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20_a%5B%22common%22%5D%5BNone%2C%20%3A%5D%5D).astype(np.float32)%0A%0A%20%20%20%20def%20pipeline_weights(use_ica%2C%20use_bad_channels%2C%20ref)%3A%0A%20%20%20%20%20%20%20%20%22%22%22(output%20channel%20names%2C%20weights%20over%20the%20basis%20rows)%20for%20one%20pipeline.%22%22%22%0A%20%20%20%20%20%20%20%20n%20%3D%20len(FILE_CHANNELS)%0A%20%20%20%20%20%20%20%20w%20%3D%20np.zeros((n%2C%20n%20%2B%203))%0A%20%20%20%20%20%20%20%20w%5B%3A%2C%20%3An%5D%20%3D%20np.eye(n)%0A%20%20%20%20%20%20%20%20w%5B%3A%2C%20n%20%2B%202%5D%20%3D%201.0%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%23%20the%20recording%20as%20made%0A%20%20%20%20%20%20%20%20if%20use_ica%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20w%5B%3A%2C%20n%3An%20%2B%202%5D%20-%3D%20recording.patterns%5B%3A%2C%20%5B0%2C%204%5D%5D%0A%20%20%20%20%20%20%20%20names%20%3D%20list(FILE_CHANNELS)%0A%20%20%20%20%20%20%20%20if%20use_bad_channels%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20good%20%3D%20%5BFILE_CHANNELS.index(c)%20for%20c%20in%20recording.good%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20rebuilt%20%3D%20_a%5B%22interp_matrix%22%5D.astype(np.float64)%20%40%20w%5Bgood%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20i%2C%20c%20in%20enumerate(INTERP)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%20c%20in%20names%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20w%5Bnames.index(c)%5D%20%3D%20rebuilt%5Bi%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20extra%20%3D%20%5Bi%20for%20i%2C%20c%20in%20enumerate(INTERP)%20if%20c%20not%20in%20names%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20w%20%3D%20np.vstack(%5Bw%2C%20rebuilt%5Bextra%5D%5D)%0A%20%20%20%20%20%20%20%20%20%20%20%20names%20%2B%3D%20%5BINTERP%5Bi%5D%20for%20i%20in%20extra%5D%0A%20%20%20%20%20%20%20%20if%20ref%20%3D%3D%20%22Average%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20w%20%3D%20w%20-%20w.mean(axis%3D0%2C%20keepdims%3DTrue)%0A%20%20%20%20%20%20%20%20elif%20ref%20%3D%3D%20%22Mastoids%20(P9%20and%20P10)%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20w%20%3D%20w%20-%20w%5B%5Bnames.index(%22P9%22)%2C%20names.index(%22P10%22)%5D%5D.mean(axis%3D0%2C%20keepdims%3DTrue)%0A%20%20%20%20%20%20%20%20elif%20ref%20%3D%3D%20%22CPz%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20w%20%3D%20w%20-%20w%5B%5Bnames.index(%22CPz%22)%5D%5D%0A%20%20%20%20%20%20%20%20return%20names%2C%20w%0A%0A%20%20%20%20def%20summaries(basis)%3A%0A%20%20%20%20%20%20%20%20%22%22%22What%20the%20plots%20need%20from%20a%20filtered%20basis%3A%20the%20trace%20window%2C%20and%20each%20basis%20row's%0A%20%20%20%20%20%20%20%20ERP%20over%20the%20clean%20trials%20and%20over%20every%20trial.%22%22%22%0A%20%20%20%20%20%20%20%20window%20%3D%20basis%5B%3A%2C%20WINDOW%3AWINDOW%20%2B%20int(10%20*%20SFREQ)%5D.copy()%0A%20%20%20%20%20%20%20%20erps%20%3D%20%7B%7D%0A%20%20%20%20%20%20%20%20for%20label%2C%20cues%20in%20((%22clean%22%2C%20recording.clean_cues)%2C%20(%22all%22%2C%20ALL_CUES))%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20time_%2C%20trials%20%3D%20zip(*(recording.epochs(row%2C%20cues)%20for%20row%20in%20basis))%0A%20%20%20%20%20%20%20%20%20%20%20%20erps%5Blabel%5D%20%3D%20np.stack(%5Bt.mean(axis%3D0)%20for%20t%20in%20trials%5D)%0A%20%20%20%20%20%20%20%20return%20window%2C%20erps%2C%20time_%5B0%5D%0A%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20BASIS%2C%0A%20%20%20%20%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20%20%20%20%20SFREQ%2C%0A%20%20%20%20%20%20%20%20TRACE_CHANNELS%2C%0A%20%20%20%20%20%20%20%20pipeline_weights%2C%0A%20%20%20%20%20%20%20%20summaries%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20BASIS%2C%0A%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20SFREQ%2C%0A%20%20%20%20TRACE_CHANNELS%2C%0A%20%20%20%20pipeline_weights%2C%0A%20%20%20%20recording%2C%0A%20%20%20%20signal%2C%0A%20%20%20%20summaries%2C%0A)%3A%0A%20%20%20%20%23%20The%20recommended%20pipeline%3A%20stage%204's%20settings.%20Computed%20once.%0A%20%20%20%20_basis%20%3D%20recording.filter(BASIS%2C%20%5Brecording.kernel(1.0%2C%2080.0)%2C%20recording.kernels%5B%22notch%22%5D%5D)%0A%20%20%20%20_names%2C%20_w%20%3D%20pipeline_weights(True%2C%20True%2C%20%22Average%22)%0A%20%20%20%20_window%2C%20_erps%2C%20erp_time%20%3D%20summaries(_basis)%0A%20%20%20%20_post%20%3D%20_w%5B%5B_names.index(c)%20for%20c%20in%20ERP_CHANNELS%5D%5D.mean(axis%3D0)%0A%20%20%20%20grey%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22trace%22%3A%20_w%5B%5B_names.index(c)%20for%20c%20in%20TRACE_CHANNELS%5D%5D%20%40%20_window%2C%0A%20%20%20%20%20%20%20%20%22erp%22%3A%20_post%20%40%20_erps%5B%22clean%22%5D%2C%0A%20%20%20%20%20%20%20%20%22spectrum%22%3A%20signal.welch(_post%20%40%20_basis%2C%20SFREQ%2C%20nperseg%3Dint(2%20*%20SFREQ))%2C%0A%20%20%20%20%7D%0A%20%20%20%20del%20_basis%0A%20%20%20%20return%20erp_time%2C%20grey%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(BASIS%2C%20high_pass%2C%20low_pass%2C%20notch%2C%20recording%2C%20summaries%2C%20time)%3A%0A%20%20%20%20%23%20Re-filters%20the%20basis%20only%20when%20a%20filter%20setting%20changes.%0A%20%20%20%20_start%20%3D%20time.perf_counter()%0A%20%20%20%20_kernels%20%3D%20%5B%5D%0A%20%20%20%20if%20high_pass.value%20is%20not%20None%20or%20low_pass.value%20is%20not%20None%3A%0A%20%20%20%20%20%20%20%20_kernels.append(recording.kernel(high_pass.value%2C%20low_pass.value))%0A%20%20%20%20if%20notch.value%3A%0A%20%20%20%20%20%20%20%20_kernels.append(recording.kernels%5B%22notch%22%5D)%0A%20%20%20%20filtered%20%3D%20recording.filter(BASIS%2C%20_kernels)%0A%20%20%20%20window%2C%20basis_erps%2C%20_%20%3D%20summaries(filtered)%0A%20%20%20%20filter_seconds%20%3D%20time.perf_counter()%20-%20_start%0A%20%20%20%20return%20basis_erps%2C%20filtered%2C%20window%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20SFREQ%2C%0A%20%20%20%20TRACE_CHANNELS%2C%0A%20%20%20%20bad_channels%2C%0A%20%20%20%20bad_trials%2C%0A%20%20%20%20basis_erps%2C%0A%20%20%20%20filtered%2C%0A%20%20%20%20ica%2C%0A%20%20%20%20pipeline_weights%2C%0A%20%20%20%20reference%2C%0A%20%20%20%20signal%2C%0A%20%20%20%20window%2C%0A)%3A%0A%20%20%20%20_names%2C%20_w%20%3D%20pipeline_weights(ica.value%2C%20bad_channels.value%2C%20reference.value)%0A%20%20%20%20_post%20%3D%20_w%5B%5B_names.index(c)%20for%20c%20in%20ERP_CHANNELS%5D%5D.mean(axis%3D0)%0A%20%20%20%20blue%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22trace%22%3A%20_w%5B%5B_names.index(c)%20for%20c%20in%20TRACE_CHANNELS%5D%5D%20%40%20window%2C%0A%20%20%20%20%20%20%20%20%22erp%22%3A%20_post%20%40%20basis_erps%5B%22clean%22%20if%20bad_trials.value%20else%20%22all%22%5D%2C%0A%20%20%20%20%20%20%20%20%22spectrum%22%3A%20signal.welch((_post%20%40%20filtered).astype(%22float32%22)%2C%20SFREQ%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20nperseg%3Dint(2%20*%20SFREQ))%2C%0A%20%20%20%20%7D%0A%20%20%20%20return%20(blue%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(TRACE_CHANNELS%2C%20mo)%3A%0A%20%20%20%20_where%20%3D%20%22%2C%20%22.join(f%22**%7Bname%7D**%20(%7Bplace%7D)%22%20for%20name%2C%20place%20in%20TRACE_CHANNELS.items())%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%201.%20The%20recording%20over%20time%0A%0A%20%20%20%20Ten%20seconds%20of%20the%20recording%20at%20%7B_where%7D%3A%20the%20stretch%20from%20module%202%2C%20with%20several%20blinks.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(SFREQ%2C%20TRACE_CHANNELS%2C%20blue%2C%20et%2C%20grey%2C%20mo%2C%20np%2C%20plt)%3A%0A%20%20%20%20_time%20%3D%20np.arange(grey%5B%22trace%22%5D.shape%5B1%5D)%20%2F%20SFREQ%0A%20%20%20%20_fig%2C%20_axes%20%3D%20et.plot_traces(plt%2C%20_time%2C%20list(TRACE_CHANNELS)%2C%20grey%5B%22trace%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20blue%5B%22trace%22%5D%2C%20height%3D1.3)%0A%20%20%20%20_axes%5B-1%5D.set_xlabel(%22Time%20(s)%22)%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(ERP_CHANNELS%2C%20mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%202.%20The%20spectrum%0A%0A%20%20%20%20The%20spectrum%20of%20the%20signal%20at%20the%20back%20of%20the%20head%20(%7B%22%2C%20%22.join(ERP_CHANNELS)%7D%2C%20averaged)%2C%0A%20%20%20%20across%20the%20whole%20recording.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(blue%2C%20et%2C%20grey%2C%20mo%2C%20plt)%3A%0A%20%20%20%20_freqs%2C%20_before%20%3D%20grey%5B%22spectrum%22%5D%0A%20%20%20%20_fig%2C%20_ax%20%3D%20et.plot_spectrum(plt%2C%20_freqs%2C%20_before%2C%20blue%5B%22spectrum%22%5D%5B1%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D(%22Recommended%22%2C%20%22Yours%22))%0A%20%20%20%20_keep%20%3D%20(_freqs%20%3E%200)%20%26%20(_freqs%20%3C%3D%2060)%0A%20%20%20%20_ax.set_ylim(_before%5B_keep%5D.min()%20%2F%20100%2C%20max(_before%5B_keep%5D.max()%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20blue%5B%22spectrum%22%5D%5B1%5D%5B_keep%5D.max())%20*%203)%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(ERP_CHANNELS%2C%20mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%203.%20The%20ERP%0A%0A%20%20%20%20The%20average%20of%20the%20trials%20at%20the%20back%20of%20the%20head%20(%7B%22%2C%20%22.join(ERP_CHANNELS)%7D)%2C%20lined%20up%0A%20%20%20%20on%20the%20moment%20the%20object%20appeared.%20Pz%20is%20back%20in%20this%20average%3A%20here%2C%20the%20bad-channel%0A%20%20%20%20step%20rebuilds%20it%20rather%20than%20leaving%20it%20out.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(bad_trials%2C%20blue%2C%20erp_time%2C%20et%2C%20grey%2C%20mo%2C%20plt)%3A%0A%20%20%20%20_fig%2C%20_%20%3D%20et.plot_erp(plt%2C%20erp_time%2C%20grey%5B%22erp%22%5D%2C%20blue%5B%22erp%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D(%22Recommended%20(69%20trials)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Yours%20(69%20trials)%22%20if%20bad_trials.value%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20else%20%22Yours%20(every%20trial)%22))%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22Predict%2C%20then%20try%3A%20which%20single%20step%20brings%20your%20ERP%20closest%20to%20the%20grey%20line%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Start%20with%20every%20step%20off%2C%20switch%20on%20one%20step%2C%20look%2C%20and%20switch%20it%20off%20again.%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22None%20of%20them%20does%20it%20alone%3A%20each%20step%20on%20its%20own%20leaves%20the%20ERP%20about%20as%20far%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22from%20the%20grey%20line%20as%20the%20raw%20recording.%20The%20steps%20work%20together%2C%20and%20the%20ERP%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22only%20takes%20shape%20once%20several%20of%20them%20are%20on.%22)%2C%0A%20%20%20%20%20%20%20%20%22Try%20this%3A%20match%20the%20recommended%20pipeline%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Set%20the%20filter%20to%201%20Hz%20and%2080%20Hz%20with%20the%20notch%20on%2C%20switch%20on%20ICA%2C%20bad%20channels%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22and%20bad%20trials%2C%20and%20choose%20the%20average%20reference.%20The%20blue%20lines%20then%20lie%20on%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22the%20grey%20ones.%22)%2C%0A%20%20%20%20%20%20%20%20%22Which%20step%20matters%20most%20for%20this%20ERP%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Match%20the%20recommended%20pipeline%2C%20then%20switch%20off%20one%20step%20at%20a%20time.%20For%20this%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22recording%2C%20the%20reference%20matters%20most%3A%20without%20it%2C%20the%20ERP%20changes%20by%20up%20to%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22about%2011%20%C2%B5V.%20ICA%20comes%20next%2C%20at%20up%20to%20about%208%20%C2%B5V%2C%20because%20the%20blinks%20line%20up%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22with%20the%20trials.%20Leaving%20out%20trial%20rejection%20or%20the%20filter%20changes%20it%20by%20up%20to%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22about%202%E2%80%933%20%C2%B5V%2C%20and%20the%20bad%20channels%20by%20less%20than%200.5%20%C2%B5V.%20Another%20recording%20could%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22rank%20the%20steps%20differently.%22)%2C%0A%20%20%20%20%20%20%20%20%22Why%20doesn't%20rejecting%20bad%20trials%20change%20the%20spectrum%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20spectrum%20here%20covers%20the%20whole%20recording%2C%20not%20just%20the%20trials%2C%20so%20leaving%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22trials%20out%20of%20the%20average%20doesn't%20touch%20it.%20Each%20step%20changes%20some%20views%20and%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22not%20others.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20---%0A%20%20%20%20%5B%E2%86%90%20Module%205%3A%20Re-referencing%5D(05_reference.html)%20%C2%B7%20%5BAll%20modules%5D(index.html)%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"app_title": "The whole EEG pipeline", "sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

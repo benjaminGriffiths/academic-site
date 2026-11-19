@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>Bad EEG trials</title>
+    <script type="module" crossorigin src="./assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="./assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="./assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.11\"\n# dependencies = [\"marimo\", \"matplotlib==3.10.8\", \"numpy==2.4.3\", \"scipy==1.17.1\"]\n# \n# [tool.marimo.display]\n# theme = \"light\"\n# \n# [tool.marimo.export]\n# lock_kind = \"observed\"\n# ///\n\nimport marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\", app_title=\"Bad EEG trials\")\n\n\n@app.cell(hide_code=True)\ndef _():\n    import sys\n    import time\n    import types\n\n    import marimo as mo\n    import matplotlib.pyplot as plt\n    import numpy as np\n\n    plt.rcParams.update({\n        \"figure.dpi\": 110, \"font.size\": 9, \"axes.spines.top\": False,\n        \"axes.spines.right\": False,\n    })\n    return mo, np, plt, sys, time, types\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Module 4: Bad trials\n\n    An artefact can ruin a short stretch of the recording without affecting the rest: a\n    large movement, a sudden jump at an electrode, or a blink that ICA didn't fully remove.\n    When a stretch like that falls inside a trial, the usual fix is to **reject the trial**:\n    leave it out of the average.\n\n    In this recording, the person who cleaned the data rejected 51 of the 120 trials. Here\n    you work with three of them, the ones whose signal swings the most. The other rejected\n    trials stay out throughout. Each of the three has two settings in the sidebar:\n\n    - **Include** keeps the trial in the average.\n    - **Reject** leaves it out.\n\n    **The data.** The same participant as the earlier modules, filtered at 0.5\u201350 Hz, with\n    the eye artefacts removed by ICA, the bad channels dropped and the average reference\n    applied. All the views show the average of the channels at the back of the head. Grey\n    lines show the ERP with all three trials included. Blue lines show it with your\n    settings.\n\n    /// note | If the page is slow\n    Everything on this page runs inside your web browser, so the first load can take a minute\n    or two. If it feels slow, close other applications and browser tabs, such as music\n    players and video calls, then reload the page.\n    ///\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\nasync def _(mo, sys, time, types):\n    async def bootstrap():\n        \"\"\"Load the shared code, public/eegteach.py: marimo's export doesn't bundle local modules.\"\"\"\n        path = mo.notebook_location() / \"public\" / \"eegteach.py\"\n        if sys.platform == \"emscripten\":\n            from pyodide.http import pyfetch\n            code = await (await pyfetch(str(path))).string()\n        else:\n            code = path.read_text()\n        module = types.ModuleType(\"eegteach\")\n        sys.modules[\"eegteach\"] = module\n        exec(compile(code, \"eegteach.py\", \"exec\"), module.__dict__)\n        return module\n\n    _start = time.perf_counter()\n    et = await bootstrap()\n    recording = et.Recording(await et.load(mo, \"example-data.npz\"), await et.load(mo, \"filters.npz\"))\n    load_seconds = time.perf_counter() - _start\n    return et, recording\n\n\n@app.cell(hide_code=True)\ndef _(et, np, recording):\n    ERP_CHANNELS = [c for c in et.POSTERIOR if c in recording.good]\n    # The back-of-head signal, cleaned as stage 4 does and filtered at 0.5-50 Hz.\n    _signal = recording.filter(recording.cleaned(ERP_CHANNELS),\n                               recording.kernel(0.5, 50.0)).mean(axis=0)\n    _a = recording.arrays\n    _complete = recording.complete(_a[\"cues\"])\n    erp_time, _trials = recording.epochs(_signal, _a[\"cues\"][_complete])\n    _rejected = _a[\"rejected\"][_complete]\n    _numbers = _a[\"trial\"][_complete]\n\n    # The three rejected trials whose back-of-head signal swings the most (peak to peak).\n    _swing = np.ptp(_trials, axis=1)\n    _marked = np.argsort(np.where(_rejected, -_swing, np.inf))[:3]\n    _shown = np.sort(np.r_[np.flatnonzero(~_rejected), _marked])   # session order\n    trials = _trials[_shown]\n    trial_numbers = _numbers[_shown]\n    MARKED = [int(n) for n in _numbers[np.sort(_marked)]]\n    swings = {int(n): float(s) for n, s in zip(_numbers, _swing)}\n    clean_swing = float(np.median(_swing[~_rejected]))\n    return (\n        ERP_CHANNELS,\n        MARKED,\n        clean_swing,\n        erp_time,\n        swings,\n        trial_numbers,\n        trials,\n    )\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, mo):\n    choices = mo.ui.dictionary({\n        str(n): mo.ui.radio(options=[\"Include\", \"Reject\"], value=\"Include\", inline=True)\n        for n in MARKED\n    })\n    return (choices,)\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, choices, mo):\n    mo.sidebar([mo.vstack([\n        mo.md(\"### Marked trials\"),\n        *[mo.vstack([mo.md(f\"**Trial {n}**\"), choices[str(n)]], gap=0.2) for n in MARKED],\n        mo.md(\"Grey: all three trials included. Blue: your settings.\"),\n    ], gap=1)])\n    return\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, choices, np, trial_numbers):\n    rejected_now = [n for n in MARKED if choices.value[str(n)] == \"Reject\"]\n    included = ~np.isin(trial_numbers, rejected_now)\n    return included, rejected_now\n\n\n@app.cell(hide_code=True)\ndef _(mo, trials):\n    mo.md(f\"\"\"\n    ## 1. Every trial\n\n    Each row is one trial, in the order they happened, and each column is a moment in time,\n    from half a second before the object appeared to one second after. The colour shows the\n    voltage: red above zero, blue below, white near zero. There are {len(trials)} rows: the\n    trials that passed cleaning, plus the three marked ones, labelled on the right. A rejected\n    trial is greyed out. Look for the marked rows: each has a long, dark stretch of strong\n    colour that the other rows don't.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, erp_time, et, mo, np, plt, rejected_now, trial_numbers, trials):\n    _fig, _ax = plt.subplots(figsize=(7, 4.6))\n    _lim = 40\n    _image = _ax.imshow(trials, aspect=\"auto\", cmap=\"RdBu_r\", vmin=-_lim, vmax=_lim,\n                        extent=(erp_time[0], erp_time[-1], len(trials) - 0.5, -0.5),\n                        interpolation=\"nearest\")\n    _ax.axvline(0, color=\"k\", ls=\"--\", lw=0.6)\n    for _n in MARKED:\n        _row = int(np.flatnonzero(trial_numbers == _n)[0])\n        if _n in rejected_now:\n            _ax.axhspan(_row - 0.5, _row + 0.5, color=\"#5f6368\", alpha=0.85, lw=0)\n        _ax.annotate(f\"Trial {_n}\" + (\" (rejected)\" if _n in rejected_now else \"\"),\n                     xy=(erp_time[-1], _row), xytext=(6, 0), textcoords=\"offset points\",\n                     va=\"center\", fontsize=8, fontweight=\"bold\", annotation_clip=False)\n    _ax.set(xlabel=\"Time from the object appearing (s)\", ylabel=\"Trial (in order)\",\n            yticks=[])\n    _bar = _fig.colorbar(_image, ax=_ax, pad=0.2, shrink=0.8)\n    _bar.set_label(f\"\u00b5V (clipped at \u00b1{_lim})\")\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## 2. The three marked trials\n\n    Each panel shows one marked trial (blue) against the range that 90% of the clean trials\n    stay within (grey band).\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, erp_time, et, included, mo, np, plt, trial_numbers, trials):\n    _clean = trials[~np.isin(trial_numbers, MARKED)]\n    _low, _high = np.percentile(_clean, [5, 95], axis=0)\n    _fig, _axes = plt.subplots(1, len(MARKED), figsize=(7, 2.3), sharey=True)\n    for _ax, _n in zip(_axes, MARKED):\n        _row = int(np.flatnonzero(trial_numbers == _n)[0])\n        _ax.fill_between(erp_time, _low, _high, color=\"#e8eaed\", lw=0)\n        _ax.plot(erp_time, trials[_row], color=et.AFTER if included[_row] else \"#9aa0a6\",\n                 lw=1.1)\n        _ax.axvline(0, color=\"k\", ls=\"--\", lw=0.6)\n        _ax.set_title(f\"Trial {_n}\" + (\"\" if included[_row] else \" (rejected)\"),\n                      fontsize=9)\n        _ax.set_xlabel(\"Time (s)\")\n    _axes[0].set_ylabel(\"\u00b5V\")\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(MARKED, clean_swing, mo, swings):\n    _list = \", \".join(f\"trial {n} by {swings[n]:.0f} \u00b5V\" for n in MARKED)\n    mo.accordion({\n        \"How far do these trials swing?\": mo.md(\n            f\"From its lowest point to its highest, a typical clean trial swings by about \"\n            f\"{clean_swing:.0f} \u00b5V. The marked trials swing much further: {_list}.\"),\n        \"What went wrong in each trial?\": mo.md(\n            \"**Trial 11** has a brief, large swing at the very start, before \u22120.3 s. \"\n            \"**Trial 40** drifts upwards after the object appears, peaking at about 0.55 s. \"\n            \"**Trial 25** slides about 150 \u00b5V below zero after the object appears. Its cause \"\n            \"is at the front of the head, where the voltage in this trial swings by more than \"\n            \"3,000 \u00b5V. Part of it reaches the back of the head too: module 5 explains how.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(ERP_CHANNELS, mo):\n    mo.md(f\"\"\"\n    ## 3. The ERP\n\n    As in the earlier modules, this is the average of the trials at the {len(ERP_CHANNELS)}\n    channels at the back of the head ({\", \".join(ERP_CHANNELS)}), lined up on the moment the\n    object appeared.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(erp_time, et, included, mo, plt, trials):\n    _fig, _ax = et.plot_erp(plt, erp_time, trials.mean(axis=0), trials[included].mean(axis=0),\n                            labels=(f\"All three included ({len(trials)} trials)\",\n                                    f\"With your settings ({int(included.sum())} trials)\"))\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion({\n        \"Predict, then try: reject trial 25\": mo.md(\n            \"Trial 25 is one trial out of 72, so you might expect it to make little \"\n            \"difference. Rejecting it raises the ERP by about 2 \u00b5V from 0.2 s onwards. Each \"\n            \"trial makes up a 72nd of the average, but trial 25 dips about 150 \u00b5V below \"\n            \"zero, and a 72nd of that is still about 2 \u00b5V.\"),\n        \"Try this: reject trials 11 and 40 as well\": mo.md(\n            \"Each changes the ERP by about 1 \u00b5V: trial 40 around 0.55 s, and trial 11 near \"\n            \"the start, before \u22120.4 s. Trial 40 swings the opposite way to trial 25, so while \"\n            \"both are included, their effects partly cancel.\"),\n        \"Why not reject every trial that looks a little unusual?\": mo.md(\n            \"Every rejected trial leaves fewer trials to average, and the fewer trials you \"\n            \"average, the more noise survives in the ERP. Rejecting 3 trials out of 72 costs \"\n            \"little, but rejecting many trials costs a lot. Trial rejection is a trade-off \"\n            \"between removing artefacts and keeping enough trials.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ---\n    [\u2190 Module 3: Bad channels](03_bad_channels.html) \u00b7 [All modules](index.html) \u00b7 [Module 5: Re-referencing \u2192](05_reference.html)\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%22marimo%22%2C%20%22matplotlib%3D%3D3.10.8%22%2C%20%22numpy%3D%3D2.4.3%22%2C%20%22scipy%3D%3D1.17.1%22%5D%0A%23%20%0A%23%20%5Btool.marimo.display%5D%0A%23%20theme%20%3D%20%22light%22%0A%23%20%0A%23%20%5Btool.marimo.export%5D%0A%23%20lock_kind%20%3D%20%22observed%22%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22%2C%20app_title%3D%22Bad%20EEG%20trials%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_()%3A%0A%20%20%20%20import%20sys%0A%20%20%20%20import%20time%0A%20%20%20%20import%20types%0A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20numpy%20as%20np%0A%0A%20%20%20%20plt.rcParams.update(%7B%0A%20%20%20%20%20%20%20%20%22figure.dpi%22%3A%20110%2C%20%22font.size%22%3A%209%2C%20%22axes.spines.top%22%3A%20False%2C%0A%20%20%20%20%20%20%20%20%22axes.spines.right%22%3A%20False%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%20mo%2C%20np%2C%20plt%2C%20sys%2C%20time%2C%20types%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Module%204%3A%20Bad%20trials%0A%0A%20%20%20%20An%20artefact%20can%20ruin%20a%20short%20stretch%20of%20the%20recording%20without%20affecting%20the%20rest%3A%20a%0A%20%20%20%20large%20movement%2C%20a%20sudden%20jump%20at%20an%20electrode%2C%20or%20a%20blink%20that%20ICA%20didn't%20fully%20remove.%0A%20%20%20%20When%20a%20stretch%20like%20that%20falls%20inside%20a%20trial%2C%20the%20usual%20fix%20is%20to%20**reject%20the%20trial**%3A%0A%20%20%20%20leave%20it%20out%20of%20the%20average.%0A%0A%20%20%20%20In%20this%20recording%2C%20the%20person%20who%20cleaned%20the%20data%20rejected%2051%20of%20the%20120%20trials.%20Here%0A%20%20%20%20you%20work%20with%20three%20of%20them%2C%20the%20ones%20whose%20signal%20swings%20the%20most.%20The%20other%20rejected%0A%20%20%20%20trials%20stay%20out%20throughout.%20Each%20of%20the%20three%20has%20two%20settings%20in%20the%20sidebar%3A%0A%0A%20%20%20%20-%20**Include**%20keeps%20the%20trial%20in%20the%20average.%0A%20%20%20%20-%20**Reject**%20leaves%20it%20out.%0A%0A%20%20%20%20**The%20data.**%20The%20same%20participant%20as%20the%20earlier%20modules%2C%20filtered%20at%200.5%E2%80%9350%20Hz%2C%20with%0A%20%20%20%20the%20eye%20artefacts%20removed%20by%20ICA%2C%20the%20bad%20channels%20dropped%20and%20the%20average%20reference%0A%20%20%20%20applied.%20All%20the%20views%20show%20the%20average%20of%20the%20channels%20at%20the%20back%20of%20the%20head.%20Grey%0A%20%20%20%20lines%20show%20the%20ERP%20with%20all%20three%20trials%20included.%20Blue%20lines%20show%20it%20with%20your%0A%20%20%20%20settings.%0A%0A%20%20%20%20%2F%2F%2F%20note%20%7C%20If%20the%20page%20is%20slow%0A%20%20%20%20Everything%20on%20this%20page%20runs%20inside%20your%20web%20browser%2C%20so%20the%20first%20load%20can%20take%20a%20minute%0A%20%20%20%20or%20two.%20If%20it%20feels%20slow%2C%20close%20other%20applications%20and%20browser%20tabs%2C%20such%20as%20music%0A%20%20%20%20players%20and%20video%20calls%2C%20then%20reload%20the%20page.%0A%20%20%20%20%2F%2F%2F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Aasync%20def%20_(mo%2C%20sys%2C%20time%2C%20types)%3A%0A%20%20%20%20async%20def%20bootstrap()%3A%0A%20%20%20%20%20%20%20%20%22%22%22Load%20the%20shared%20code%2C%20public%2Feegteach.py%3A%20marimo's%20export%20doesn't%20bundle%20local%20modules.%22%22%22%0A%20%20%20%20%20%20%20%20path%20%3D%20mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22eegteach.py%22%0A%20%20%20%20%20%20%20%20if%20sys.platform%20%3D%3D%20%22emscripten%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20pyfetch%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20await%20(await%20pyfetch(str(path))).string()%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20path.read_text()%0A%20%20%20%20%20%20%20%20module%20%3D%20types.ModuleType(%22eegteach%22)%0A%20%20%20%20%20%20%20%20sys.modules%5B%22eegteach%22%5D%20%3D%20module%0A%20%20%20%20%20%20%20%20exec(compile(code%2C%20%22eegteach.py%22%2C%20%22exec%22)%2C%20module.__dict__)%0A%20%20%20%20%20%20%20%20return%20module%0A%0A%20%20%20%20_start%20%3D%20time.perf_counter()%0A%20%20%20%20et%20%3D%20await%20bootstrap()%0A%20%20%20%20recording%20%3D%20et.Recording(await%20et.load(mo%2C%20%22example-data.npz%22)%2C%20await%20et.load(mo%2C%20%22filters.npz%22))%0A%20%20%20%20load_seconds%20%3D%20time.perf_counter()%20-%20_start%0A%20%20%20%20return%20et%2C%20recording%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(et%2C%20np%2C%20recording)%3A%0A%20%20%20%20ERP_CHANNELS%20%3D%20%5Bc%20for%20c%20in%20et.POSTERIOR%20if%20c%20in%20recording.good%5D%0A%20%20%20%20%23%20The%20back-of-head%20signal%2C%20cleaned%20as%20stage%204%20does%20and%20filtered%20at%200.5-50%20Hz.%0A%20%20%20%20_signal%20%3D%20recording.filter(recording.cleaned(ERP_CHANNELS)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20recording.kernel(0.5%2C%2050.0)).mean(axis%3D0)%0A%20%20%20%20_a%20%3D%20recording.arrays%0A%20%20%20%20_complete%20%3D%20recording.complete(_a%5B%22cues%22%5D)%0A%20%20%20%20erp_time%2C%20_trials%20%3D%20recording.epochs(_signal%2C%20_a%5B%22cues%22%5D%5B_complete%5D)%0A%20%20%20%20_rejected%20%3D%20_a%5B%22rejected%22%5D%5B_complete%5D%0A%20%20%20%20_numbers%20%3D%20_a%5B%22trial%22%5D%5B_complete%5D%0A%0A%20%20%20%20%23%20The%20three%20rejected%20trials%20whose%20back-of-head%20signal%20swings%20the%20most%20(peak%20to%20peak).%0A%20%20%20%20_swing%20%3D%20np.ptp(_trials%2C%20axis%3D1)%0A%20%20%20%20_marked%20%3D%20np.argsort(np.where(_rejected%2C%20-_swing%2C%20np.inf))%5B%3A3%5D%0A%20%20%20%20_shown%20%3D%20np.sort(np.r_%5Bnp.flatnonzero(~_rejected)%2C%20_marked%5D)%20%20%20%23%20session%20order%0A%20%20%20%20trials%20%3D%20_trials%5B_shown%5D%0A%20%20%20%20trial_numbers%20%3D%20_numbers%5B_shown%5D%0A%20%20%20%20MARKED%20%3D%20%5Bint(n)%20for%20n%20in%20_numbers%5Bnp.sort(_marked)%5D%5D%0A%20%20%20%20swings%20%3D%20%7Bint(n)%3A%20float(s)%20for%20n%2C%20s%20in%20zip(_numbers%2C%20_swing)%7D%0A%20%20%20%20clean_swing%20%3D%20float(np.median(_swing%5B~_rejected%5D))%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20%20%20%20%20MARKED%2C%0A%20%20%20%20%20%20%20%20clean_swing%2C%0A%20%20%20%20%20%20%20%20erp_time%2C%0A%20%20%20%20%20%20%20%20swings%2C%0A%20%20%20%20%20%20%20%20trial_numbers%2C%0A%20%20%20%20%20%20%20%20trials%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20mo)%3A%0A%20%20%20%20choices%20%3D%20mo.ui.dictionary(%7B%0A%20%20%20%20%20%20%20%20str(n)%3A%20mo.ui.radio(options%3D%5B%22Include%22%2C%20%22Reject%22%5D%2C%20value%3D%22Include%22%2C%20inline%3DTrue)%0A%20%20%20%20%20%20%20%20for%20n%20in%20MARKED%0A%20%20%20%20%7D)%0A%20%20%20%20return%20(choices%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20choices%2C%20mo)%3A%0A%20%20%20%20mo.sidebar(%5Bmo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Marked%20trials%22)%2C%0A%20%20%20%20%20%20%20%20*%5Bmo.vstack(%5Bmo.md(f%22**Trial%20%7Bn%7D**%22)%2C%20choices%5Bstr(n)%5D%5D%2C%20gap%3D0.2)%20for%20n%20in%20MARKED%5D%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Grey%3A%20all%20three%20trials%20included.%20Blue%3A%20your%20settings.%22)%2C%0A%20%20%20%20%5D%2C%20gap%3D1)%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20choices%2C%20np%2C%20trial_numbers)%3A%0A%20%20%20%20rejected_now%20%3D%20%5Bn%20for%20n%20in%20MARKED%20if%20choices.value%5Bstr(n)%5D%20%3D%3D%20%22Reject%22%5D%0A%20%20%20%20included%20%3D%20~np.isin(trial_numbers%2C%20rejected_now)%0A%20%20%20%20return%20included%2C%20rejected_now%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo%2C%20trials)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%201.%20Every%20trial%0A%0A%20%20%20%20Each%20row%20is%20one%20trial%2C%20in%20the%20order%20they%20happened%2C%20and%20each%20column%20is%20a%20moment%20in%20time%2C%0A%20%20%20%20from%20half%20a%20second%20before%20the%20object%20appeared%20to%20one%20second%20after.%20The%20colour%20shows%20the%0A%20%20%20%20voltage%3A%20red%20above%20zero%2C%20blue%20below%2C%20white%20near%20zero.%20There%20are%20%7Blen(trials)%7D%20rows%3A%20the%0A%20%20%20%20trials%20that%20passed%20cleaning%2C%20plus%20the%20three%20marked%20ones%2C%20labelled%20on%20the%20right.%20A%20rejected%0A%20%20%20%20trial%20is%20greyed%20out.%20Look%20for%20the%20marked%20rows%3A%20each%20has%20a%20long%2C%20dark%20stretch%20of%20strong%0A%20%20%20%20colour%20that%20the%20other%20rows%20don't.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20erp_time%2C%20et%2C%20mo%2C%20np%2C%20plt%2C%20rejected_now%2C%20trial_numbers%2C%20trials)%3A%0A%20%20%20%20_fig%2C%20_ax%20%3D%20plt.subplots(figsize%3D(7%2C%204.6))%0A%20%20%20%20_lim%20%3D%2040%0A%20%20%20%20_image%20%3D%20_ax.imshow(trials%2C%20aspect%3D%22auto%22%2C%20cmap%3D%22RdBu_r%22%2C%20vmin%3D-_lim%2C%20vmax%3D_lim%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20extent%3D(erp_time%5B0%5D%2C%20erp_time%5B-1%5D%2C%20len(trials)%20-%200.5%2C%20-0.5)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20interpolation%3D%22nearest%22)%0A%20%20%20%20_ax.axvline(0%2C%20color%3D%22k%22%2C%20ls%3D%22--%22%2C%20lw%3D0.6)%0A%20%20%20%20for%20_n%20in%20MARKED%3A%0A%20%20%20%20%20%20%20%20_row%20%3D%20int(np.flatnonzero(trial_numbers%20%3D%3D%20_n)%5B0%5D)%0A%20%20%20%20%20%20%20%20if%20_n%20in%20rejected_now%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20_ax.axhspan(_row%20-%200.5%2C%20_row%20%2B%200.5%2C%20color%3D%22%235f6368%22%2C%20alpha%3D0.85%2C%20lw%3D0)%0A%20%20%20%20%20%20%20%20_ax.annotate(f%22Trial%20%7B_n%7D%22%20%2B%20(%22%20(rejected)%22%20if%20_n%20in%20rejected_now%20else%20%22%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20xy%3D(erp_time%5B-1%5D%2C%20_row)%2C%20xytext%3D(6%2C%200)%2C%20textcoords%3D%22offset%20points%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20va%3D%22center%22%2C%20fontsize%3D8%2C%20fontweight%3D%22bold%22%2C%20annotation_clip%3DFalse)%0A%20%20%20%20_ax.set(xlabel%3D%22Time%20from%20the%20object%20appearing%20(s)%22%2C%20ylabel%3D%22Trial%20(in%20order)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20yticks%3D%5B%5D)%0A%20%20%20%20_bar%20%3D%20_fig.colorbar(_image%2C%20ax%3D_ax%2C%20pad%3D0.2%2C%20shrink%3D0.8)%0A%20%20%20%20_bar.set_label(f%22%C2%B5V%20(clipped%20at%20%C2%B1%7B_lim%7D)%22)%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%202.%20The%20three%20marked%20trials%0A%0A%20%20%20%20Each%20panel%20shows%20one%20marked%20trial%20(blue)%20against%20the%20range%20that%2090%25%20of%20the%20clean%20trials%0A%20%20%20%20stay%20within%20(grey%20band).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20erp_time%2C%20et%2C%20included%2C%20mo%2C%20np%2C%20plt%2C%20trial_numbers%2C%20trials)%3A%0A%20%20%20%20_clean%20%3D%20trials%5B~np.isin(trial_numbers%2C%20MARKED)%5D%0A%20%20%20%20_low%2C%20_high%20%3D%20np.percentile(_clean%2C%20%5B5%2C%2095%5D%2C%20axis%3D0)%0A%20%20%20%20_fig%2C%20_axes%20%3D%20plt.subplots(1%2C%20len(MARKED)%2C%20figsize%3D(7%2C%202.3)%2C%20sharey%3DTrue)%0A%20%20%20%20for%20_ax%2C%20_n%20in%20zip(_axes%2C%20MARKED)%3A%0A%20%20%20%20%20%20%20%20_row%20%3D%20int(np.flatnonzero(trial_numbers%20%3D%3D%20_n)%5B0%5D)%0A%20%20%20%20%20%20%20%20_ax.fill_between(erp_time%2C%20_low%2C%20_high%2C%20color%3D%22%23e8eaed%22%2C%20lw%3D0)%0A%20%20%20%20%20%20%20%20_ax.plot(erp_time%2C%20trials%5B_row%5D%2C%20color%3Det.AFTER%20if%20included%5B_row%5D%20else%20%22%239aa0a6%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lw%3D1.1)%0A%20%20%20%20%20%20%20%20_ax.axvline(0%2C%20color%3D%22k%22%2C%20ls%3D%22--%22%2C%20lw%3D0.6)%0A%20%20%20%20%20%20%20%20_ax.set_title(f%22Trial%20%7B_n%7D%22%20%2B%20(%22%22%20if%20included%5B_row%5D%20else%20%22%20(rejected)%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20fontsize%3D9)%0A%20%20%20%20%20%20%20%20_ax.set_xlabel(%22Time%20(s)%22)%0A%20%20%20%20_axes%5B0%5D.set_ylabel(%22%C2%B5V%22)%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(MARKED%2C%20clean_swing%2C%20mo%2C%20swings)%3A%0A%20%20%20%20_list%20%3D%20%22%2C%20%22.join(f%22trial%20%7Bn%7D%20by%20%7Bswings%5Bn%5D%3A.0f%7D%20%C2%B5V%22%20for%20n%20in%20MARKED)%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22How%20far%20do%20these%20trials%20swing%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22From%20its%20lowest%20point%20to%20its%20highest%2C%20a%20typical%20clean%20trial%20swings%20by%20about%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22%7Bclean_swing%3A.0f%7D%20%C2%B5V.%20The%20marked%20trials%20swing%20much%20further%3A%20%7B_list%7D.%22)%2C%0A%20%20%20%20%20%20%20%20%22What%20went%20wrong%20in%20each%20trial%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22**Trial%2011**%20has%20a%20brief%2C%20large%20swing%20at%20the%20very%20start%2C%20before%20%E2%88%920.3%20s.%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22**Trial%2040**%20drifts%20upwards%20after%20the%20object%20appears%2C%20peaking%20at%20about%200.55%20s.%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22**Trial%2025**%20slides%20about%20150%20%C2%B5V%20below%20zero%20after%20the%20object%20appears.%20Its%20cause%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22is%20at%20the%20front%20of%20the%20head%2C%20where%20the%20voltage%20in%20this%20trial%20swings%20by%20more%20than%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%223%2C000%20%C2%B5V.%20Part%20of%20it%20reaches%20the%20back%20of%20the%20head%20too%3A%20module%205%20explains%20how.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(ERP_CHANNELS%2C%20mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%203.%20The%20ERP%0A%0A%20%20%20%20As%20in%20the%20earlier%20modules%2C%20this%20is%20the%20average%20of%20the%20trials%20at%20the%20%7Blen(ERP_CHANNELS)%7D%0A%20%20%20%20channels%20at%20the%20back%20of%20the%20head%20(%7B%22%2C%20%22.join(ERP_CHANNELS)%7D)%2C%20lined%20up%20on%20the%20moment%20the%0A%20%20%20%20object%20appeared.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(erp_time%2C%20et%2C%20included%2C%20mo%2C%20plt%2C%20trials)%3A%0A%20%20%20%20_fig%2C%20_ax%20%3D%20et.plot_erp(plt%2C%20erp_time%2C%20trials.mean(axis%3D0)%2C%20trials%5Bincluded%5D.mean(axis%3D0)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D(f%22All%20three%20included%20(%7Blen(trials)%7D%20trials)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20f%22With%20your%20settings%20(%7Bint(included.sum())%7D%20trials)%22))%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22Predict%2C%20then%20try%3A%20reject%20trial%2025%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Trial%2025%20is%20one%20trial%20out%20of%2072%2C%20so%20you%20might%20expect%20it%20to%20make%20little%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22difference.%20Rejecting%20it%20raises%20the%20ERP%20by%20about%202%20%C2%B5V%20from%200.2%20s%20onwards.%20Each%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22trial%20makes%20up%20a%2072nd%20of%20the%20average%2C%20but%20trial%2025%20dips%20about%20150%20%C2%B5V%20below%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22zero%2C%20and%20a%2072nd%20of%20that%20is%20still%20about%202%20%C2%B5V.%22)%2C%0A%20%20%20%20%20%20%20%20%22Try%20this%3A%20reject%20trials%2011%20and%2040%20as%20well%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Each%20changes%20the%20ERP%20by%20about%201%20%C2%B5V%3A%20trial%2040%20around%200.55%20s%2C%20and%20trial%2011%20near%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22the%20start%2C%20before%20%E2%88%920.4%20s.%20Trial%2040%20swings%20the%20opposite%20way%20to%20trial%2025%2C%20so%20while%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22both%20are%20included%2C%20their%20effects%20partly%20cancel.%22)%2C%0A%20%20%20%20%20%20%20%20%22Why%20not%20reject%20every%20trial%20that%20looks%20a%20little%20unusual%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Every%20rejected%20trial%20leaves%20fewer%20trials%20to%20average%2C%20and%20the%20fewer%20trials%20you%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22average%2C%20the%20more%20noise%20survives%20in%20the%20ERP.%20Rejecting%203%20trials%20out%20of%2072%20costs%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22little%2C%20but%20rejecting%20many%20trials%20costs%20a%20lot.%20Trial%20rejection%20is%20a%20trade-off%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22between%20removing%20artefacts%20and%20keeping%20enough%20trials.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20---%0A%20%20%20%20%5B%E2%86%90%20Module%203%3A%20Bad%20channels%5D(03_bad_channels.html)%20%C2%B7%20%5BAll%20modules%5D(index.html)%20%C2%B7%20%5BModule%205%3A%20Re-referencing%20%E2%86%92%5D(05_reference.html)%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"app_title": "Bad EEG trials", "sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

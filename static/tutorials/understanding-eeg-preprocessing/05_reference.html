@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>EEG re-referencing</title>
+    <script type="module" crossorigin src="./assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="./assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="./assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="./assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="./assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="./assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="./assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="./assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="./assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="./assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="./assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="./assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Bcdzex-3.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "# /// script\n# requires-python = \"\u003E=3.11\"\n# dependencies = [\"marimo\", \"matplotlib==3.10.8\", \"numpy==2.4.3\", \"scipy==1.17.1\"]\n# \n# [tool.marimo.display]\n# theme = \"light\"\n# \n# [tool.marimo.export]\n# lock_kind = \"observed\"\n# ///\n\nimport marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\", app_title=\"EEG re-referencing\")\n\n\n@app.cell(hide_code=True)\ndef _():\n    import sys\n    import time\n    import types\n\n    import marimo as mo\n    import matplotlib.pyplot as plt\n    import numpy as np\n\n    plt.rcParams.update({\n        \"figure.dpi\": 110, \"font.size\": 9, \"axes.spines.top\": False,\n        \"axes.spines.right\": False,\n    })\n    return mo, np, plt, sys, time, types\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Module 5: Re-referencing\n\n    EEG measures voltage, and a voltage is always a difference between two points. Each\n    channel is the voltage at one electrode minus the voltage at a **reference**. Choosing a\n    reference means choosing what every channel is measured against. Changing it subtracts a\n    different signal from every channel at once.\n\n    You can choose between four references in the sidebar:\n\n    - **Average.** Each channel is measured against the average of all the channels. This is\n      the reference the earlier modules used, and the one this course uses by default. It's a\n      common choice, but researchers still debate which reference is best.\n    - **None (as recorded).** The recording as the amplifier wrote it. This system (BioSemi)\n      records every electrode against an extra electrode called CMS, which on this cap sits\n      at the back of the head, close to POz. BioSemi recordings are meant to be re-referenced\n      afterwards.\n    - **Mastoids.** The mastoids are the bony bumps on the skull just behind each ear. They're\n      a popular reference because they're further from many sources of brain activity than\n      most of the scalp. This cap has no electrodes on the mastoids, so the average of the two\n      closest electrodes, P9 and P10, stands in for them.\n    - **CPz.** A single electrode on top of the head, towards the back.\n\n    **The data.** The same participant and trials as the earlier modules, filtered at\n    0.5\u201350 Hz, with the eye artefacts removed by ICA and the bad channels and bad trials\n    removed. Grey lines show the average reference. Blue lines show your choice.\n\n    /// note | If the page is slow\n    Everything on this page runs inside your web browser, so the first load can take a minute\n    or two. If it feels slow, close other applications and browser tabs, such as music\n    players and video calls, then reload the page.\n    ///\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\nasync def _(mo, sys, time, types):\n    async def bootstrap():\n        \"\"\"Load the shared code, public/eegteach.py: marimo's export doesn't bundle local modules.\"\"\"\n        path = mo.notebook_location() / \"public\" / \"eegteach.py\"\n        if sys.platform == \"emscripten\":\n            from pyodide.http import pyfetch\n            code = await (await pyfetch(str(path))).string()\n        else:\n            code = path.read_text()\n        module = types.ModuleType(\"eegteach\")\n        sys.modules[\"eegteach\"] = module\n        exec(compile(code, \"eegteach.py\", \"exec\"), module.__dict__)\n        return module\n\n    _start = time.perf_counter()\n    et = await bootstrap()\n    recording = et.Recording(await et.load(mo, \"example-data.npz\"), await et.load(mo, \"filters.npz\"))\n    load_seconds = time.perf_counter() - _start\n    return et, recording\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    # Label shown -\u003E (file name of the precomputed scalp maps, channels averaged as the\n    # reference: None for no reference, \"all\" for the average reference).\n    REFERENCES = {\n        \"Average\": (\"average\", \"all\"),\n        \"None (as recorded)\": (\"none\", None),\n        \"Mastoids (P9 and P10)\": (\"mastoids\", [\"P9\", \"P10\"]),\n        \"CPz\": (\"cpz\", [\"CPz\"]),\n    }\n    reference = mo.ui.radio(options=list(REFERENCES), value=\"Average\")\n    return REFERENCES, reference\n\n\n@app.cell(hide_code=True)\ndef _(mo, reference):\n    mo.sidebar([mo.vstack([\n        mo.md(\"### Reference\"),\n        reference,\n        mo.md(\"Grey: average reference. Blue: your choice.\"),\n    ], gap=1)])\n    return\n\n\n@app.cell(hide_code=True)\ndef _(et, np, recording):\n    SFREQ = recording.sfreq\n    NAMES = recording.good\n    ERP_CHANNELS = [c for c in et.POSTERIOR if c in NAMES]\n    TRACE_CHANNELS = {\"Fpz\": \"middle of the forehead\", \"CPz\": \"top of the head\",\n                      \"P9\": \"behind the left ear\", \"O1\": \"back of the head\"}\n\n    # The recording with no reference at all: the shared file is average-referenced, and\n    # `common` is what that reference subtracted. Filtered once; each reference is then a\n    # subtraction from the per-channel ERPs and the trace window.\n    _a = recording.arrays\n    _unref = recording.filter(recording.unreferenced(NAMES) + _a[\"common\"][None, :],\n                              recording.kernel(0.5, 50.0))\n    erp_time, _ = recording.erp(_unref[0])\n    channel_erps = np.stack([recording.erp(row)[1] for row in _unref])\n    # The trace shows 10 s around trial 25, the trial with the large artefact in module 4.\n    _cue = int(_a[\"cues\"][_a[\"trial\"] == 25][0])\n    window = _unref[:, _cue - int(3 * SFREQ):_cue + int(7 * SFREQ)].copy()\n    del _unref\n    return (\n        ERP_CHANNELS,\n        NAMES,\n        SFREQ,\n        TRACE_CHANNELS,\n        channel_erps,\n        erp_time,\n        window,\n    )\n\n\n@app.cell(hide_code=True)\ndef _(NAMES, REFERENCES, np):\n    def referenced(x, label):\n        \"\"\"x (channels x samples, no reference) measured against one of the references.\"\"\"\n        chans = REFERENCES[label][1]\n        if chans is None:\n            return x\n        rows = slice(None) if chans == \"all\" else [NAMES.index(c) for c in chans]\n        return x - np.asarray(x[rows]).mean(axis=0, keepdims=True)\n\n    return (referenced,)\n\n\n@app.cell(hide_code=True)\ndef _(TRACE_CHANNELS, mo):\n    _where = \", \".join(f\"**{name}** ({place})\" for name, place in TRACE_CHANNELS.items())\n    mo.md(f\"\"\"\n    ## 1. The recording over time\n\n    Here are ten seconds of the recording around trial 25, the trial with the large artefact\n    in module 4. The dashed line marks the moment the object appeared. The channels are\n    {_where}.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(\n    NAMES,\n    SFREQ,\n    TRACE_CHANNELS,\n    et,\n    mo,\n    np,\n    plt,\n    reference,\n    referenced,\n    window,\n):\n    _rows = [NAMES.index(c) for c in TRACE_CHANNELS]\n    _before = referenced(window, \"Average\")[_rows]\n    _after = referenced(window, reference.value)[_rows]\n    _time = np.arange(window.shape[1]) / SFREQ - 3\n    _fig, _axes = et.plot_traces(plt, _time, list(TRACE_CHANNELS), _before, _after,\n                                 height=1.3)\n    for _ax in _axes:\n        _ax.axvline(0, color=\"k\", ls=\"--\", lw=0.6)\n    _axes[-1].set_xlabel(\"Time from the object appearing (s)\")\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion({\n        \"Look at the average reference first\": mo.md(\n            \"Fpz swings by thousands of microvolts in this trial. At the same moments, O1 \"\n            \"and P9, at the back of the head, swing the other way. Nothing happened at the \"\n            \"back of the head: the swing there comes from the reference.\"),\n        \"Why does an artefact at the front show up at the back?\": mo.md(\n            \"The average reference subtracts the average of all the channels from every \"\n            \"channel. When a few channels at the front swing by thousands of microvolts, \"\n            \"the average swings with them, by tens of microvolts. Subtracting that average \"\n            \"from every channel puts a mirror image of the artefact everywhere else.\\n\\n\"\n            \"This explains two things you saw earlier: Fz's jump showing up in F2 and CPz in \"\n            \"module 3, and trial 25 dipping at the back of the head in module 4.\"),\n        \"Try this: switch to the mastoids, then to CPz\": mo.md(\n            \"With the mastoids as the reference, O1 swings much less during the artefact, \"\n            \"and P9 hardly moves: it's half of the reference itself. With CPz as the \"\n            \"reference, CPz becomes a flat line, because a channel measured against itself \"\n            \"is always zero.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(ERP_CHANNELS, mo, recording):\n    mo.md(f\"\"\"\n    ## 2. The ERP\n\n    As in the earlier modules, this is the average of {len(recording.clean_cues)} trials over\n    {len(ERP_CHANNELS)} channels at the back of the head ({\", \".join(ERP_CHANNELS)}), lined up\n    on the moment the object appeared.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(\n    ERP_CHANNELS,\n    NAMES,\n    channel_erps,\n    erp_time,\n    et,\n    mo,\n    plt,\n    reference,\n    referenced,\n):\n    _rows = [NAMES.index(c) for c in ERP_CHANNELS]\n    _before = referenced(channel_erps, \"Average\")[_rows].mean(axis=0)\n    _after = referenced(channel_erps, reference.value)[_rows].mean(axis=0)\n    _fig, _ = et.plot_erp(plt, erp_time, _before, _after,\n                          labels=(\"Average reference\", reference.value))\n    et.figure_html(mo, plt, _fig)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion({\n        \"Predict, then try: switch to the mastoids\": mo.md(\n            \"The sharp peak at about 0.1 s disappears: it drops from about 5 \u00b5V to just \"\n            \"below zero. The slow wave near 0.5 s stays, a little smaller. P9 and P10 sit \"\n            \"low on the back of the head, so they pick up some of the early visual response \"\n            \"themselves, and subtracting them takes it away.\"),\n        \"Predict, then try: switch to CPz\": mo.md(\n            \"The early peak grows, to about 8 \u00b5V, and the slow wave near 0.5 s shrinks, to \"\n            \"about 8 \u00b5V. CPz takes part in the slow wave itself, so measuring against it \"\n            \"takes part of the slow wave away. A new peak also appears at about 0.33 s: CPz's \"\n            \"own ERP dips there, and every wiggle in the reference shows up, upside down, in \"\n            \"every channel measured against it.\"),\n        \"Try this: switch to None (as recorded)\": mo.md(\n            \"The ERP's peaks almost vanish: there's no early peak and no slow wave near \"\n            \"0.5 s, only slow drifts of a few microvolts. The CMS electrode that BioSemi \"\n            \"records against sits \"\n            \"among these channels, close to POz, so they're measured against a point that \"\n            \"has nearly the same response. That's one reason BioSemi recordings are \"\n            \"re-referenced before analysis.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## 3. The ERP across the scalp\n\n    Each map shows the ERP at every channel at one moment: 0.11 s, the early peak, and\n    0.49 s, the slow wave. The nose points up, and red and blue mark voltages above and\n    below zero. All the maps share one colour scale.\n    \"\"\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(REFERENCES, et, mo, reference):\n    mo.vstack([\n        mo.md(\"**Average reference**\"),\n        mo.image(src=et.image_url(mo, \"reference_maps_average.png\"), width=420),\n        mo.md(f\"**{reference.value}**\"),\n        mo.image(src=et.image_url(mo, f\"reference_maps_{REFERENCES[reference.value][0]}.png\"),\n                 width=420),\n    ], gap=0.4)\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.accordion({\n        \"Compare the two rows of maps\": mo.md(\n            \"The pattern stays the same: whichever channels are higher than others under \"\n            \"one reference are higher under every reference. What changes is where zero \"\n            \"falls, so the whole map shifts towards red or towards blue. A reference never \"\n            \"changes the differences between channels. It only changes the point that \"\n            \"everything is measured from.\"),\n    })\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ---\n    [\u2190 Module 4: Bad trials](04_bad_trials.html) \u00b7 [All modules](index.html) \u00b7 [Module 6: The whole pipeline \u2192](06_pipeline.html)\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.11%22%0A%23%20dependencies%20%3D%20%5B%22marimo%22%2C%20%22matplotlib%3D%3D3.10.8%22%2C%20%22numpy%3D%3D2.4.3%22%2C%20%22scipy%3D%3D1.17.1%22%5D%0A%23%20%0A%23%20%5Btool.marimo.display%5D%0A%23%20theme%20%3D%20%22light%22%0A%23%20%0A%23%20%5Btool.marimo.export%5D%0A%23%20lock_kind%20%3D%20%22observed%22%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22%2C%20app_title%3D%22EEG%20re-referencing%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_()%3A%0A%20%20%20%20import%20sys%0A%20%20%20%20import%20time%0A%20%20%20%20import%20types%0A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20import%20numpy%20as%20np%0A%0A%20%20%20%20plt.rcParams.update(%7B%0A%20%20%20%20%20%20%20%20%22figure.dpi%22%3A%20110%2C%20%22font.size%22%3A%209%2C%20%22axes.spines.top%22%3A%20False%2C%0A%20%20%20%20%20%20%20%20%22axes.spines.right%22%3A%20False%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%20mo%2C%20np%2C%20plt%2C%20sys%2C%20time%2C%20types%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Module%205%3A%20Re-referencing%0A%0A%20%20%20%20EEG%20measures%20voltage%2C%20and%20a%20voltage%20is%20always%20a%20difference%20between%20two%20points.%20Each%0A%20%20%20%20channel%20is%20the%20voltage%20at%20one%20electrode%20minus%20the%20voltage%20at%20a%20**reference**.%20Choosing%20a%0A%20%20%20%20reference%20means%20choosing%20what%20every%20channel%20is%20measured%20against.%20Changing%20it%20subtracts%20a%0A%20%20%20%20different%20signal%20from%20every%20channel%20at%20once.%0A%0A%20%20%20%20You%20can%20choose%20between%20four%20references%20in%20the%20sidebar%3A%0A%0A%20%20%20%20-%20**Average.**%20Each%20channel%20is%20measured%20against%20the%20average%20of%20all%20the%20channels.%20This%20is%0A%20%20%20%20%20%20the%20reference%20the%20earlier%20modules%20used%2C%20and%20the%20one%20this%20course%20uses%20by%20default.%20It's%20a%0A%20%20%20%20%20%20common%20choice%2C%20but%20researchers%20still%20debate%20which%20reference%20is%20best.%0A%20%20%20%20-%20**None%20(as%20recorded).**%20The%20recording%20as%20the%20amplifier%20wrote%20it.%20This%20system%20(BioSemi)%0A%20%20%20%20%20%20records%20every%20electrode%20against%20an%20extra%20electrode%20called%20CMS%2C%20which%20on%20this%20cap%20sits%0A%20%20%20%20%20%20at%20the%20back%20of%20the%20head%2C%20close%20to%20POz.%20BioSemi%20recordings%20are%20meant%20to%20be%20re-referenced%0A%20%20%20%20%20%20afterwards.%0A%20%20%20%20-%20**Mastoids.**%20The%20mastoids%20are%20the%20bony%20bumps%20on%20the%20skull%20just%20behind%20each%20ear.%20They're%0A%20%20%20%20%20%20a%20popular%20reference%20because%20they're%20further%20from%20many%20sources%20of%20brain%20activity%20than%0A%20%20%20%20%20%20most%20of%20the%20scalp.%20This%20cap%20has%20no%20electrodes%20on%20the%20mastoids%2C%20so%20the%20average%20of%20the%20two%0A%20%20%20%20%20%20closest%20electrodes%2C%20P9%20and%20P10%2C%20stands%20in%20for%20them.%0A%20%20%20%20-%20**CPz.**%20A%20single%20electrode%20on%20top%20of%20the%20head%2C%20towards%20the%20back.%0A%0A%20%20%20%20**The%20data.**%20The%20same%20participant%20and%20trials%20as%20the%20earlier%20modules%2C%20filtered%20at%0A%20%20%20%200.5%E2%80%9350%20Hz%2C%20with%20the%20eye%20artefacts%20removed%20by%20ICA%20and%20the%20bad%20channels%20and%20bad%20trials%0A%20%20%20%20removed.%20Grey%20lines%20show%20the%20average%20reference.%20Blue%20lines%20show%20your%20choice.%0A%0A%20%20%20%20%2F%2F%2F%20note%20%7C%20If%20the%20page%20is%20slow%0A%20%20%20%20Everything%20on%20this%20page%20runs%20inside%20your%20web%20browser%2C%20so%20the%20first%20load%20can%20take%20a%20minute%0A%20%20%20%20or%20two.%20If%20it%20feels%20slow%2C%20close%20other%20applications%20and%20browser%20tabs%2C%20such%20as%20music%0A%20%20%20%20players%20and%20video%20calls%2C%20then%20reload%20the%20page.%0A%20%20%20%20%2F%2F%2F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Aasync%20def%20_(mo%2C%20sys%2C%20time%2C%20types)%3A%0A%20%20%20%20async%20def%20bootstrap()%3A%0A%20%20%20%20%20%20%20%20%22%22%22Load%20the%20shared%20code%2C%20public%2Feegteach.py%3A%20marimo's%20export%20doesn't%20bundle%20local%20modules.%22%22%22%0A%20%20%20%20%20%20%20%20path%20%3D%20mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22eegteach.py%22%0A%20%20%20%20%20%20%20%20if%20sys.platform%20%3D%3D%20%22emscripten%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20from%20pyodide.http%20import%20pyfetch%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20await%20(await%20pyfetch(str(path))).string()%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20code%20%3D%20path.read_text()%0A%20%20%20%20%20%20%20%20module%20%3D%20types.ModuleType(%22eegteach%22)%0A%20%20%20%20%20%20%20%20sys.modules%5B%22eegteach%22%5D%20%3D%20module%0A%20%20%20%20%20%20%20%20exec(compile(code%2C%20%22eegteach.py%22%2C%20%22exec%22)%2C%20module.__dict__)%0A%20%20%20%20%20%20%20%20return%20module%0A%0A%20%20%20%20_start%20%3D%20time.perf_counter()%0A%20%20%20%20et%20%3D%20await%20bootstrap()%0A%20%20%20%20recording%20%3D%20et.Recording(await%20et.load(mo%2C%20%22example-data.npz%22)%2C%20await%20et.load(mo%2C%20%22filters.npz%22))%0A%20%20%20%20load_seconds%20%3D%20time.perf_counter()%20-%20_start%0A%20%20%20%20return%20et%2C%20recording%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20Label%20shown%20-%3E%20(file%20name%20of%20the%20precomputed%20scalp%20maps%2C%20channels%20averaged%20as%20the%0A%20%20%20%20%23%20reference%3A%20None%20for%20no%20reference%2C%20%22all%22%20for%20the%20average%20reference).%0A%20%20%20%20REFERENCES%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22Average%22%3A%20(%22average%22%2C%20%22all%22)%2C%0A%20%20%20%20%20%20%20%20%22None%20(as%20recorded)%22%3A%20(%22none%22%2C%20None)%2C%0A%20%20%20%20%20%20%20%20%22Mastoids%20(P9%20and%20P10)%22%3A%20(%22mastoids%22%2C%20%5B%22P9%22%2C%20%22P10%22%5D)%2C%0A%20%20%20%20%20%20%20%20%22CPz%22%3A%20(%22cpz%22%2C%20%5B%22CPz%22%5D)%2C%0A%20%20%20%20%7D%0A%20%20%20%20reference%20%3D%20mo.ui.radio(options%3Dlist(REFERENCES)%2C%20value%3D%22Average%22)%0A%20%20%20%20return%20REFERENCES%2C%20reference%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo%2C%20reference)%3A%0A%20%20%20%20mo.sidebar(%5Bmo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Reference%22)%2C%0A%20%20%20%20%20%20%20%20reference%2C%0A%20%20%20%20%20%20%20%20mo.md(%22Grey%3A%20average%20reference.%20Blue%3A%20your%20choice.%22)%2C%0A%20%20%20%20%5D%2C%20gap%3D1)%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(et%2C%20np%2C%20recording)%3A%0A%20%20%20%20SFREQ%20%3D%20recording.sfreq%0A%20%20%20%20NAMES%20%3D%20recording.good%0A%20%20%20%20ERP_CHANNELS%20%3D%20%5Bc%20for%20c%20in%20et.POSTERIOR%20if%20c%20in%20NAMES%5D%0A%20%20%20%20TRACE_CHANNELS%20%3D%20%7B%22Fpz%22%3A%20%22middle%20of%20the%20forehead%22%2C%20%22CPz%22%3A%20%22top%20of%20the%20head%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22P9%22%3A%20%22behind%20the%20left%20ear%22%2C%20%22O1%22%3A%20%22back%20of%20the%20head%22%7D%0A%0A%20%20%20%20%23%20The%20recording%20with%20no%20reference%20at%20all%3A%20the%20shared%20file%20is%20average-referenced%2C%20and%0A%20%20%20%20%23%20%60common%60%20is%20what%20that%20reference%20subtracted.%20Filtered%20once%3B%20each%20reference%20is%20then%20a%0A%20%20%20%20%23%20subtraction%20from%20the%20per-channel%20ERPs%20and%20the%20trace%20window.%0A%20%20%20%20_a%20%3D%20recording.arrays%0A%20%20%20%20_unref%20%3D%20recording.filter(recording.unreferenced(NAMES)%20%2B%20_a%5B%22common%22%5D%5BNone%2C%20%3A%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20recording.kernel(0.5%2C%2050.0))%0A%20%20%20%20erp_time%2C%20_%20%3D%20recording.erp(_unref%5B0%5D)%0A%20%20%20%20channel_erps%20%3D%20np.stack(%5Brecording.erp(row)%5B1%5D%20for%20row%20in%20_unref%5D)%0A%20%20%20%20%23%20The%20trace%20shows%2010%20s%20around%20trial%2025%2C%20the%20trial%20with%20the%20large%20artefact%20in%20module%204.%0A%20%20%20%20_cue%20%3D%20int(_a%5B%22cues%22%5D%5B_a%5B%22trial%22%5D%20%3D%3D%2025%5D%5B0%5D)%0A%20%20%20%20window%20%3D%20_unref%5B%3A%2C%20_cue%20-%20int(3%20*%20SFREQ)%3A_cue%20%2B%20int(7%20*%20SFREQ)%5D.copy()%0A%20%20%20%20del%20_unref%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20%20%20%20%20NAMES%2C%0A%20%20%20%20%20%20%20%20SFREQ%2C%0A%20%20%20%20%20%20%20%20TRACE_CHANNELS%2C%0A%20%20%20%20%20%20%20%20channel_erps%2C%0A%20%20%20%20%20%20%20%20erp_time%2C%0A%20%20%20%20%20%20%20%20window%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(NAMES%2C%20REFERENCES%2C%20np)%3A%0A%20%20%20%20def%20referenced(x%2C%20label)%3A%0A%20%20%20%20%20%20%20%20%22%22%22x%20(channels%20x%20samples%2C%20no%20reference)%20measured%20against%20one%20of%20the%20references.%22%22%22%0A%20%20%20%20%20%20%20%20chans%20%3D%20REFERENCES%5Blabel%5D%5B1%5D%0A%20%20%20%20%20%20%20%20if%20chans%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20x%0A%20%20%20%20%20%20%20%20rows%20%3D%20slice(None)%20if%20chans%20%3D%3D%20%22all%22%20else%20%5BNAMES.index(c)%20for%20c%20in%20chans%5D%0A%20%20%20%20%20%20%20%20return%20x%20-%20np.asarray(x%5Brows%5D).mean(axis%3D0%2C%20keepdims%3DTrue)%0A%0A%20%20%20%20return%20(referenced%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(TRACE_CHANNELS%2C%20mo)%3A%0A%20%20%20%20_where%20%3D%20%22%2C%20%22.join(f%22**%7Bname%7D**%20(%7Bplace%7D)%22%20for%20name%2C%20place%20in%20TRACE_CHANNELS.items())%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%201.%20The%20recording%20over%20time%0A%0A%20%20%20%20Here%20are%20ten%20seconds%20of%20the%20recording%20around%20trial%2025%2C%20the%20trial%20with%20the%20large%20artefact%0A%20%20%20%20in%20module%204.%20The%20dashed%20line%20marks%20the%20moment%20the%20object%20appeared.%20The%20channels%20are%0A%20%20%20%20%7B_where%7D.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20NAMES%2C%0A%20%20%20%20SFREQ%2C%0A%20%20%20%20TRACE_CHANNELS%2C%0A%20%20%20%20et%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20np%2C%0A%20%20%20%20plt%2C%0A%20%20%20%20reference%2C%0A%20%20%20%20referenced%2C%0A%20%20%20%20window%2C%0A)%3A%0A%20%20%20%20_rows%20%3D%20%5BNAMES.index(c)%20for%20c%20in%20TRACE_CHANNELS%5D%0A%20%20%20%20_before%20%3D%20referenced(window%2C%20%22Average%22)%5B_rows%5D%0A%20%20%20%20_after%20%3D%20referenced(window%2C%20reference.value)%5B_rows%5D%0A%20%20%20%20_time%20%3D%20np.arange(window.shape%5B1%5D)%20%2F%20SFREQ%20-%203%0A%20%20%20%20_fig%2C%20_axes%20%3D%20et.plot_traces(plt%2C%20_time%2C%20list(TRACE_CHANNELS)%2C%20_before%2C%20_after%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3D1.3)%0A%20%20%20%20for%20_ax%20in%20_axes%3A%0A%20%20%20%20%20%20%20%20_ax.axvline(0%2C%20color%3D%22k%22%2C%20ls%3D%22--%22%2C%20lw%3D0.6)%0A%20%20%20%20_axes%5B-1%5D.set_xlabel(%22Time%20from%20the%20object%20appearing%20(s)%22)%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22Look%20at%20the%20average%20reference%20first%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Fpz%20swings%20by%20thousands%20of%20microvolts%20in%20this%20trial.%20At%20the%20same%20moments%2C%20O1%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22and%20P9%2C%20at%20the%20back%20of%20the%20head%2C%20swing%20the%20other%20way.%20Nothing%20happened%20at%20the%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22back%20of%20the%20head%3A%20the%20swing%20there%20comes%20from%20the%20reference.%22)%2C%0A%20%20%20%20%20%20%20%20%22Why%20does%20an%20artefact%20at%20the%20front%20show%20up%20at%20the%20back%3F%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20average%20reference%20subtracts%20the%20average%20of%20all%20the%20channels%20from%20every%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22channel.%20When%20a%20few%20channels%20at%20the%20front%20swing%20by%20thousands%20of%20microvolts%2C%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22the%20average%20swings%20with%20them%2C%20by%20tens%20of%20microvolts.%20Subtracting%20that%20average%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22from%20every%20channel%20puts%20a%20mirror%20image%20of%20the%20artefact%20everywhere%20else.%5Cn%5Cn%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22This%20explains%20two%20things%20you%20saw%20earlier%3A%20Fz's%20jump%20showing%20up%20in%20F2%20and%20CPz%20in%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22module%203%2C%20and%20trial%2025%20dipping%20at%20the%20back%20of%20the%20head%20in%20module%204.%22)%2C%0A%20%20%20%20%20%20%20%20%22Try%20this%3A%20switch%20to%20the%20mastoids%2C%20then%20to%20CPz%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22With%20the%20mastoids%20as%20the%20reference%2C%20O1%20swings%20much%20less%20during%20the%20artefact%2C%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22and%20P9%20hardly%20moves%3A%20it's%20half%20of%20the%20reference%20itself.%20With%20CPz%20as%20the%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22reference%2C%20CPz%20becomes%20a%20flat%20line%2C%20because%20a%20channel%20measured%20against%20itself%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22is%20always%20zero.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(ERP_CHANNELS%2C%20mo%2C%20recording)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%202.%20The%20ERP%0A%0A%20%20%20%20As%20in%20the%20earlier%20modules%2C%20this%20is%20the%20average%20of%20%7Blen(recording.clean_cues)%7D%20trials%20over%0A%20%20%20%20%7Blen(ERP_CHANNELS)%7D%20channels%20at%20the%20back%20of%20the%20head%20(%7B%22%2C%20%22.join(ERP_CHANNELS)%7D)%2C%20lined%20up%0A%20%20%20%20on%20the%20moment%20the%20object%20appeared.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20ERP_CHANNELS%2C%0A%20%20%20%20NAMES%2C%0A%20%20%20%20channel_erps%2C%0A%20%20%20%20erp_time%2C%0A%20%20%20%20et%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20plt%2C%0A%20%20%20%20reference%2C%0A%20%20%20%20referenced%2C%0A)%3A%0A%20%20%20%20_rows%20%3D%20%5BNAMES.index(c)%20for%20c%20in%20ERP_CHANNELS%5D%0A%20%20%20%20_before%20%3D%20referenced(channel_erps%2C%20%22Average%22)%5B_rows%5D.mean(axis%3D0)%0A%20%20%20%20_after%20%3D%20referenced(channel_erps%2C%20reference.value)%5B_rows%5D.mean(axis%3D0)%0A%20%20%20%20_fig%2C%20_%20%3D%20et.plot_erp(plt%2C%20erp_time%2C%20_before%2C%20_after%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20labels%3D(%22Average%20reference%22%2C%20reference.value))%0A%20%20%20%20et.figure_html(mo%2C%20plt%2C%20_fig)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22Predict%2C%20then%20try%3A%20switch%20to%20the%20mastoids%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20sharp%20peak%20at%20about%200.1%20s%20disappears%3A%20it%20drops%20from%20about%205%20%C2%B5V%20to%20just%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22below%20zero.%20The%20slow%20wave%20near%200.5%20s%20stays%2C%20a%20little%20smaller.%20P9%20and%20P10%20sit%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22low%20on%20the%20back%20of%20the%20head%2C%20so%20they%20pick%20up%20some%20of%20the%20early%20visual%20response%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22themselves%2C%20and%20subtracting%20them%20takes%20it%20away.%22)%2C%0A%20%20%20%20%20%20%20%20%22Predict%2C%20then%20try%3A%20switch%20to%20CPz%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20early%20peak%20grows%2C%20to%20about%208%20%C2%B5V%2C%20and%20the%20slow%20wave%20near%200.5%20s%20shrinks%2C%20to%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22about%208%20%C2%B5V.%20CPz%20takes%20part%20in%20the%20slow%20wave%20itself%2C%20so%20measuring%20against%20it%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22takes%20part%20of%20the%20slow%20wave%20away.%20A%20new%20peak%20also%20appears%20at%20about%200.33%20s%3A%20CPz's%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22own%20ERP%20dips%20there%2C%20and%20every%20wiggle%20in%20the%20reference%20shows%20up%2C%20upside%20down%2C%20in%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22every%20channel%20measured%20against%20it.%22)%2C%0A%20%20%20%20%20%20%20%20%22Try%20this%3A%20switch%20to%20None%20(as%20recorded)%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20ERP's%20peaks%20almost%20vanish%3A%20there's%20no%20early%20peak%20and%20no%20slow%20wave%20near%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%220.5%20s%2C%20only%20slow%20drifts%20of%20a%20few%20microvolts.%20The%20CMS%20electrode%20that%20BioSemi%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22records%20against%20sits%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22among%20these%20channels%2C%20close%20to%20POz%2C%20so%20they're%20measured%20against%20a%20point%20that%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22has%20nearly%20the%20same%20response.%20That's%20one%20reason%20BioSemi%20recordings%20are%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22re-referenced%20before%20analysis.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%203.%20The%20ERP%20across%20the%20scalp%0A%0A%20%20%20%20Each%20map%20shows%20the%20ERP%20at%20every%20channel%20at%20one%20moment%3A%200.11%20s%2C%20the%20early%20peak%2C%20and%0A%20%20%20%200.49%20s%2C%20the%20slow%20wave.%20The%20nose%20points%20up%2C%20and%20red%20and%20blue%20mark%20voltages%20above%20and%0A%20%20%20%20below%20zero.%20All%20the%20maps%20share%20one%20colour%20scale.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(REFERENCES%2C%20et%2C%20mo%2C%20reference)%3A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22**Average%20reference**%22)%2C%0A%20%20%20%20%20%20%20%20mo.image(src%3Det.image_url(mo%2C%20%22reference_maps_average.png%22)%2C%20width%3D420)%2C%0A%20%20%20%20%20%20%20%20mo.md(f%22**%7Breference.value%7D**%22)%2C%0A%20%20%20%20%20%20%20%20mo.image(src%3Det.image_url(mo%2C%20f%22reference_maps_%7BREFERENCES%5Breference.value%5D%5B0%5D%7D.png%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3D420)%2C%0A%20%20%20%20%5D%2C%20gap%3D0.4)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.accordion(%7B%0A%20%20%20%20%20%20%20%20%22Compare%20the%20two%20rows%20of%20maps%22%3A%20mo.md(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22The%20pattern%20stays%20the%20same%3A%20whichever%20channels%20are%20higher%20than%20others%20under%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22one%20reference%20are%20higher%20under%20every%20reference.%20What%20changes%20is%20where%20zero%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22falls%2C%20so%20the%20whole%20map%20shifts%20towards%20red%20or%20towards%20blue.%20A%20reference%20never%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22changes%20the%20differences%20between%20channels.%20It%20only%20changes%20the%20point%20that%20%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%22everything%20is%20measured%20from.%22)%2C%0A%20%20%20%20%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20---%0A%20%20%20%20%5B%E2%86%90%20Module%204%3A%20Bad%20trials%5D(04_bad_trials.html)%20%C2%B7%20%5BAll%20modules%5D(index.html)%20%C2%B7%20%5BModule%206%3A%20The%20whole%20pipeline%20%E2%86%92%5D(06_pipeline.html)%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"app_title": "EEG re-referencing", "sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

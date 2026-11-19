@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cleaning EEG</title>
+<style>
+  :root { --text: #202124; --muted: #5f6368; --line: #dadce0; --accent: #1a73e8;
+           --bg: #ffffff; --card: #f8f9fa; }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #e8eaed; --muted: #9aa0a6; --line: #3c4043; --accent: #8ab4f8;
+             --bg: #202124; --card: #2a2b2e; }
+  }
+  body { margin: 0; background: var(--bg); color: var(--text);
+          font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2rem; margin: 0 0 8px; }
+  p { margin: 0 0 16px; }
+  .lede { color: var(--muted); }
+  ol { list-style: none; padding: 0; margin: 32px 0; }
+  li a { display: block; padding: 16px 20px; margin-bottom: 12px; border: 1px solid var(--line);
+          border-radius: 8px; background: var(--card); color: inherit; text-decoration: none; }
+  li a:hover, li a:focus-visible { border-color: var(--accent); }
+  li strong { display: block; color: var(--accent); }
+  li span { color: var(--muted); font-size: 0.95rem; }
+  .note { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Cleaning EEG</h1>
+  <p class="lede">An interactive tutorial on what each EEG preprocessing step does to the
+  signal. Each module lets you switch a step on and off and see how the recording, its
+  spectrum and an event-related potential (ERP) change.</p>
+  <p>Work through the modules in order. Each one uses the same recording, from one
+  participant doing a memory test.</p>
+  <ol>
+    <li><a href="00_raw_eeg.html"><strong>Module 0: Raw EEG</strong><span>Why EEG needs cleaning, and a scroll through the recording before any cleaning.</span></a></li>
+    <li><a href="01_filtering.html"><strong>Module 1: Filtering</strong><span>What high-pass, low-pass and notch filters do to the recording and the ERP.</span></a></li>
+    <li><a href="02_ica.html"><strong>Module 2: ICA</strong><span>Removing blinks and eye movements, and what happens if you remove brain signal.</span></a></li>
+    <li><a href="03_bad_channels.html"><strong>Module 3: Bad channels</strong><span>Dropping a faulty electrode, and why losing one channel barely moves the ERP.</span></a></li>
+    <li><a href="04_bad_trials.html"><strong>Module 4: Bad trials</strong><span>Rejecting trials spoiled by artefacts, and the trade-off with keeping enough trials.</span></a></li>
+    <li><a href="05_reference.html"><strong>Module 5: Re-referencing</strong><span>How the choice of reference changes every channel, and what it leaves unchanged.</span></a></li>
+    <li><a href="06_pipeline.html"><strong>Module 6: The whole pipeline</strong><span>Building your own pipeline and comparing it with a recommended one.</span></a></li>
+  </ol>
+  <p class="note">Everything runs inside your web browser, so each module can take a minute or
+  two to load. If a page feels slow, close other applications and browser tabs, such as
+  music players and video calls, then reload it.</p>
+</main>
+</body>
+</html>
