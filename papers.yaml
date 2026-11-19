@@ -1,0 +1,414 @@
+# ─────────────────────────────────────────────────────────────
+#  Everything on the site comes from this file.
+#  Edit it, push to GitHub, and the site rebuilds itself.
+# ─────────────────────────────────────────────────────────────
+
+site:
+  name: Benjamin J. Griffiths
+  role: Assistant Professor
+  department: School of Psychology
+  institution: University of Nottingham
+  base_url: https://www.benjaminjamesgriffiths.com   # no trailing slash
+  domain: www.benjaminjamesgriffiths.com             # written to CNAME; set to "" while testing on github.io
+  photo: headshot.jpg                                # square, ~400 px; put it in static/ (omit and the slot just closes up)
+  bio: >
+    I'm a cognitive neuroscientist studying how the human brain forms and
+    retrieves long-term memories: what neural oscillations contribute to
+    memory, and how far the neural hubs of memory and navigation overlap.
+    I combine intracranial EEG, MEG and fMRI with forward encoding models,
+    classifiers and non-invasive brain stimulation, and I'm interested in how
+    these insights could help people living with dementia, or learners in
+    the classroom.
+
+  # Icons appear only for links that are filled in.
+  links:
+    email: benjamin.griffiths@nottingham.ac.uk   # shown under your affiliation; scraper-resistant
+    google_scholar: https://scholar.google.co.uk/citations?user=SRWavIgAAAAJ&hl=en     # e.g. https://scholar.google.com/citations?user=XXXX
+    orcid: https://orcid.org/0000-0001-8600-4480
+    bluesky: https://bsky.app/profile/benjamingriffiths.bsky.social
+    linkedin: https://www.linkedin.com/in/benjamin-j-griffiths/
+    github: https://github.com/benjaminGriffiths
+    university: https://www.nottingham.ac.uk/science/research/n3centre/n3centre-researchers/dr-benjamin-j-griffiths.aspx
+    cv: ""                 # e.g. cv.pdf (put the file in static/)
+
+  # Read by search engines and AI models only — not shown on the page.
+  # Helps them tell you apart from other people called Benjamin Griffiths.
+  alumni_of: [University of Birmingham, University of Leeds]
+  knows_about: [Episodic memory, Neural oscillations, Neuromodulation]
+
+# ─────────────────────────────────────────────────────────────
+#  Papers (newest first is not required — the build sorts by date)
+#
+#  slug      folder + PDF name; never change once live (Scholar keys on the URL)
+#  authors   "Family, Given" — one per entry, in order
+#  date      YYYY-MM-DD (or YYYY-MM, or YYYY)
+#  pdf       a matching file must exist at pdfs/<slug>.pdf, or no PDF link is made
+#  drive_id  only used by fetch_pdfs.py to pull your existing Google Drive copies
+#  also      extra copies (repository, PsyArXiv…) — the redundancy links
+#  verify    true = some metadata came from your CV, not Crossref; check, then delete the line
+# ─────────────────────────────────────────────────────────────
+
+papers:
+
+  - slug: griffiths-2026-alpha-awareness
+    title: Alpha oscillations track the projection of reactivated memories into conscious awareness
+    authors: ["Griffiths, Benjamin J."]
+    journal: Journal of Neuroscience
+    volume: "46"
+    article_number: e1487252026
+    date: 2026-03-04
+    doi: 10.1523/JNEUROSCI.1487-25.2026
+    journal_url: https://www.jneurosci.org/content/early/2026/03/03/JNEUROSCI.1487-25.2026.abstract
+    preprint_url: https://doi.org/10.64898/2026.02.13.705747
+    drive_id: 18pSOJHEPh7TCijvDcJosWBDEPqHvSgEF
+    abstract: >
+      By definition, episodic memory is a conscious phenomenon. Memory traces reactivated by the hippocampus and reinstated in the sensory cortices need to enter conscious awareness for them to be re-experienced and overtly recalled. However, it remains unclear whether such reactivation in-and-of-itself ensures that memories will be overtly recalled. To investigate this, magnetoencephalography (MEG) recordings were analysed from thirty-one participants (18 female, 13 male) completing a video-word pair associates memory task. When combining linear classifiers and spectral analyses, sensory cortical reactivation could be observed without overt recall occurring, suggesting reactivation does not guarantee overt recall. Instead, overt recall was additively predicted by (i) an increase in reactivated representations rhythmically fluctuating within the alpha band, and (ii) a decrease in total sensory neocortical alpha power. These results are consistent with accounts which propose that reactivation benefits from desynchronising the network to provide representational space for stimulus-specific information, and/or amplifying stimulus-specific information above residual noise. Altogether, these results suggest that representational reactivation can occur without overt recall, and suggest a role for alpha oscillations in projecting internally-generated representations into conscious awareness.
+
+  - slug: griffiths-2025-rhythmic-light
+    title: Rhythmic light stimulation elicits multiple, concurrent neural responses that separably shape human perception
+    authors: ["Griffiths, Benjamin J.", "Duecker, Katharina", "Fakche, Camille", "Dugué, Laura", "Quinn, Andrew", "Jensen, Ole"]
+    journal: bioRxiv
+    preprint: true
+    date: 2025-11-06
+    doi: 10.1101/2025.11.05.686709
+    journal_url: https://www.biorxiv.org/content/10.1101/2025.11.05.686709v1
+    drive_id: 1lJP_LBSE7qm4uRApJwFQqQe9TuyTlW3O
+    abstract: >
+      Rhythmic light stimulation offers solutions to innumerable cognitive and neurological disorders. However, like any neuromodulatory technique, responses to rhythmic light stimulation are highly variable, producing challenges in replicating lab-based studies and translating findings to the clinic. Across three MEG/EEG experiments, we show that this variability can, in part, be attributed to rhythmic light stimulation eliciting multiple, coexisting neural responses which have separable impacts on cognition. Specifically, we find that rhythmic light stimulation produces distinct neural responses at the fundamental (f) and second harmonic (2f) frequencies, and that these responses are differentially shaped by endogenous oscillatory dynamics that vary across participants. Importantly, these responses separably contribute to perception, with harmonic gamma-band responses supporting the representation of stimulus-specific information, and the phase of harmonic alpha-band responses causally contributing to near-threshold visual perception. We reproduce these effects across datasets, paradigms, and oscillatory bands, suggesting that the multiplex oscillatory responses elicited by rhythmic light stimulation are a robust and pervasive phenomenon. We propose that the complexity of neural responses to rhythmic stimulation can explain why there is substantial variability between studies using these techniques, and that understanding these complex responses may help advance neuromodulatory technologies for both fundamental and clinical neuroscience.
+
+  - slug: kerren-2025-dimensionality
+    title: Exploring the role of dimensionality transformation in episodic memory
+    authors: ["Kerrén, Casper", "Reznik, Daniel", "Doeller, Christian F.", "Griffiths, Benjamin J."]
+    journal: Trends in Cognitive Sciences
+    date: 2025
+    doi: ""          # TODO: add DOI (Crossref lookup failed)
+    journal_url: https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(25)00021-X
+    drive_id: 1qbDvEXfwnby9VavUnlEjk50j8X7Gh-z9
+    verify: true
+    abstract: >
+      Episodic memory must accomplish two adversarial goals: encoding and storing a multitude of experiences without exceeding the finite neuronal structure of the brain, and recalling memories in vivid detail. Dimensionality reduction and expansion (‘dimensionality transformation’) enable the brain to meet these demands. Reduction compresses sensory input into simplified, storable codes, while expansion reconstructs vivid details. Although these processes are essential to memory, their neural mechanisms for episodic memory remain unclear. Drawing on recent insights from cognitive psychology, systems neuroscience, and neuroanatomy, we propose two accounts of how dimensionality transformation occurs in the brain: structurally (via corticohippocampal pathways) and functionally (through neural oscillations). By examining cross-species evidence, we highlight neural mechanisms that may support episodic memory and identify crucial questions for future research.
+
+  - slug: griffiths-2024-head-direction
+    title: Electrophysiological signatures of veridical head direction in humans
+    authors: ["Griffiths, Benjamin J.", "Schreiner, T.", "Schaefer, J.", "Vollmar, C.", "Kaufmann, E.", "Quach, S.", "Remi, J.", "Noachtar, S.", "Staudigl, Tobias"]
+    journal: Nature Human Behaviour
+    date: 2024-05-07
+    doi: 10.1038/s41562-024-01872-1
+    journal_url: https://www.nature.com/articles/s41562-024-01872-1
+    preprint_url: https://www.biorxiv.org/content/10.1101/2023.01.26.525724v2
+    drive_id: 1Ftemfs60aLRm9Q-bmwts-A50o2DCJg2J
+    verify: true     # add volume/pages; co-author given names
+    abstract: >
+      Information about heading direction is critical for navigation as it provides the means to orient ourselves in space. However, given that veridical head-direction signals require physical rotation of the head and most human neuroimaging experiments depend upon fixing the head in position, little is known about how the human brain is tuned to such heading signals. Here we address this by asking 52 healthy participants undergoing simultaneous electroencephalography and motion tracking recordings (split into two experiments) and 10 patients undergoing simultaneous intracranial electroencephalography and motion tracking recordings to complete a series of orientation tasks in which they made physical head rotations to target positions. We then used a series of forward encoding models and linear mixed-effects models to isolate electrophysiological activity that was specifically tuned to heading direction. We identified a robust posterior central signature that predicts changes in veridical head orientation after regressing out confounds including sensory input and muscular activity. Both source localization and intracranial analysis implicated the medial temporal lobe as the origin of this effect. Subsequent analyses disentangled head-direction signatures from signals relating to head rotation and those reflecting location-specific effects. Lastly, when directly comparing head direction and eye-gaze-related tuning, we found that the brain maintains both codes while actively navigating, with stronger tuning to head direction in the medial temporal lobe. Together, these results reveal a taxonomy of population-level head-direction signals within the human brain that is reminiscent of those reported in the single units of rodents.
+
+  - slug: kerren-2024-prototype-confidence
+    title: A reduction in self-reported confidence accompanies the recall of memories distorted by prototypes
+    authors: ["Kerrén, Casper", "Zhao, Y.", "Griffiths, Benjamin J."]
+    journal: Communications Psychology
+    volume: "2"
+    article_number: "58"
+    date: 2024-07-01
+    doi: 10.1038/s44271-024-00108-2
+    journal_url: https://www.nature.com/articles/s44271-024-00108-2
+    preprint_url: https://osf.io/preprints/psyarxiv/gznfh
+    drive_id: 1R_aA6qbdixXvYAyxC0FtSmv71O2MiueY
+    verify: true
+    abstract: >
+      When we recall a past event, we reconstruct the event based on a combination of episodic details and semantic knowledge (e.g., prototypes). Though prototypes can impair the veracity of recall, it remains unclear whether we are metacognitively aware of the distortions they introduce. To address this, we conducted six experiments in which participants learned object-colour/object-location pairs and subsequently recalled the colour/location when cued with the object. Leveraging unsupervised machine learning algorithms, we extracted participant-specific prototypes and embedded responses in two-dimensional space to quantify prototype-based distortions in individual memory traces. Our findings reveal robust and conceptually replicable evidence to suggest that prototype-based distortion is accompanied by a reduction in self-reported confidence - an implicit measure of metacognitive awareness. Critically, we find evidence to suggest that it is prototype-based distortion of a memory trace that undermines confidence, rather than a lack of confidence biasing reconstruction towards the use of prototypes. Collectively, these findings suggest that we possess metacognitive awareness of distortions embedded in our memories.
+
+  - slug: griffiths-2023-gamma-memory
+    title: Gamma oscillations and episodic memory
+    authors: ["Griffiths, Benjamin J.", "Jensen, Ole"]
+    journal: Trends in Neurosciences
+    volume: "46"
+    issue: "10"
+    first_page: "832"
+    last_page: "846"
+    date: 2023
+    doi: ""          # TODO: add DOI (Crossref lookup failed)
+    journal_url: https://www.cell.com/trends/neurosciences/fulltext/S0166-2236(23)00163-7
+    drive_id: 1Q5a4yfWcw8uIbNFrc6nQjiMi1-nEI1u5
+    verify: true
+    abstract: >
+      Enhanced gamma oscillatory activity (30–80 Hz) accompanies the successful formation and retrieval of episodic memories. While this co-occurrence is well documented, the mechanistic contributions of gamma oscillatory activity to episodic memory remain unclear. Here, we review how gamma oscillatory activity may facilitate spike timing-dependent plasticity, neural communication, and sequence encoding/retrieval, thereby ensuring the successful formation and/or retrieval of an episodic memory. Based on the evidence reviewed, we propose that multiple, distinct forms of gamma oscillation can be found within the canonical gamma band, each of which has a complementary role in the neural processes listed above. Further exploration of these theories using causal manipulations may be key to elucidating the relevance of gamma oscillatory activity to episodic memory.
+
+  - slug: griffiths-2023-gamma-stimulation
+    title: Imperceptible gamma-band sensory stimulation enhances episodic memory retrieval
+    authors: ["Griffiths, Benjamin J.", "Weinert, D.", "Jensen, Ole", "Staudigl, Tobias"]
+    journal: bioRxiv
+    preprint: true
+    date: 2023-07-21
+    doi: 10.1101/2023.07.21.550057
+    journal_url: https://www.biorxiv.org/content/10.1101/2023.07.21.550057v1
+    drive_id: 1-3us8v_Ts8F6F5Ik27PT3tC8Ib9WhSsQ
+    verify: true
+    abstract: >
+      Enhanced gamma activity (30-100Hz) coincides with the successful recall of episodic memories, but it remains unknown whether this oscillatory activity is a cause or a consequence of the retrieval process. To address this question, we asked human participants to complete a paired associates memory task while undergoing sensory stimulation (at 65Hz, 43.3Hz and 32.5Hz). We observed that 65Hz and 32.5Hz sensory stimulation enhances recall compared to a baseline condition without stimulation. No similar effect was observed following 43.3Hz stimulation. Notably, while almost all participants could perceive 32.5Hz and 43.3Hz sensory stimulation, only a small proportion of participants (∼10%) could perceive the 65Hz visual flicker, suggesting 65Hz sensory stimulation acts as an imperceptible intervention to enhance recall. To understand the dual action of 65Hz and 32.5Hz sensory stimulation on recall, we built three pyramidal-interneuronal network gamma (PING) models and drove them using the same stimulation protocols as in the behavioural task. The behavioural results could be reproduced by stimulating an endogenous ∼32Hz oscillation, but not by stimulating an endogenous ∼65Hz oscillation nor by stimulating a network without an endogenous oscillation. These results suggest that imperceptible 65Hz sensory stimulation enhances recall by harmonically entraining an endogenous ∼32.5Hz oscillation. Based on these findings, we propose that “slow” gamma oscillations play a causal role in episodic memory retrieval.
+
+  - slug: griffiths-2022-thalamus
+    title: Rhythmic interactions between the mediodorsal thalamus and prefrontal cortex precede human visual perception
+    authors: ["Griffiths, Benjamin J.", "Zaehle, Tino", "Repplinger, Stefan", "Schmitt, Friedhelm C.", "Voges, Jürgen", "Hanslmayr, Simon", "Staudigl, Tobias"]
+    journal: Nature Communications
+    volume: "13"
+    article_number: "3736"
+    date: 2022-06-29
+    doi: 10.1038/s41467-022-31407-z
+    journal_url: https://www.nature.com/articles/s41467-022-31407-z
+    preprint_url: https://doi.org/10.1101/2022.02.07.479362
+    drive_id: 1uEOx98IqFItKeIWO8ZKYsDPc6fxJ6NCK
+    abstract: >
+      The thalamus is much more than a simple sensory relay. High-order thalamic nuclei, such as the mediodorsal thalamus, exert a profound influence over animal cognition. However, given the difficulty of directly recording from the thalamus in humans, next-to-nothing is known about thalamic and thalamocortical contributions to human cognition. To address this, we analysed simultaneously-recorded thalamic iEEG and whole-head MEG in six patients (four female, two male; plus MEG recordings from twelve healthy controls) as they completed a visual detection task. We observed that the phase of both ongoing mediodorsal thalamic and prefrontal low-frequency activity was predictive of perceptual performance. Critically however, mediodorsal thalamic activity mediated prefrontal contributions to perceptual performance. These results suggest that it is thalamocortical interactions, rather than cortical activity alone, that is predictive of upcoming perceptual performance and, more generally, highlights the importance of accounting for the thalamus when theorising about cortical contributions to human cognition.
+
+  - slug: griffiths-2021-disentangling
+    title: Disentangling neocortical alpha/beta and hippocampal theta/gamma oscillations in human episodic memory formation
+    authors: ["Griffiths, Benjamin J.", "Martín-Buro, María Carmen", "Staresina, Bernhard P.", "Hanslmayr, Simon"]
+    journal: NeuroImage
+    volume: "242"
+    article_number: "118454"
+    date: 2021-11
+    doi: 10.1016/j.neuroimage.2021.118454
+    journal_url: https://www.sciencedirect.com/science/article/pii/S105381192100728X
+    preprint_url: https://doi.org/10.1101/2020.01.22.915330
+    abstract: >
+      To form an episodic memory, we must first process a vast amount of sensory information about the to-be-encoded event and then bind these sensory representations together to form a coherent memory trace. While these two cognitive capabilities are thought to have two distinct neural origins, with neocortical alpha/beta oscillations supporting information representation and hippocampal theta-gamma phase-amplitude coupling supporting mnemonic binding, evidence for a dissociation between these two neural markers is conspicuously absent. To address this, seventeen human participants completed an associative memory task that first involved processing information about three sequentially-presented stimuli, and then binding these stimuli together into a coherent memory trace, all the while undergoing MEG recordings. We found that decreases in neocortical alpha/beta power during sequence perception, but not mnemonic binding, correlated with enhanced memory performance. Hippocampal theta/gamma phase-amplitude coupling, however, showed the opposite pattern; increases during mnemonic binding (but not sequence perception) correlated with enhanced memory performance. These results demonstrate that memory-related decreases in neocortical alpha/beta power and memory-related increases in hippocampal theta/gamma phase-amplitude coupling arise at distinct stages of the memory formation process. We speculate that this temporal dissociation reflects a functional dissociation in which neocortical alpha/beta oscillations could support the processing of incoming information relevant to the memory, while hippocampal theta-gamma phase-amplitude coupling could support the binding of this information into a coherent memory trace.
+
+  - slug: griffiths-2021-encoding-retrieval
+    title: Alpha/beta power decreases during episodic memory formation predict the magnitude of alpha/beta power decreases during subsequent retrieval
+    authors: ["Griffiths, Benjamin J.", "Martín-Buro, María Carmen", "Staresina, Bernhard P.", "Hanslmayr, Simon", "Staudigl, Tobias"]
+    journal: Neuropsychologia
+    volume: "153"
+    article_number: "107755"
+    date: 2021-03
+    doi: 10.1016/j.neuropsychologia.2021.107755
+    journal_url: https://www.sciencedirect.com/science/article/abs/pii/S0028393221000063
+    preprint_url: https://doi.org/10.1101/2020.07.08.193763
+    abstract: >
+      Episodic memory retrieval is characterised by the vivid reinstatement of information about a personally-experienced event. Growing evidence suggests that this reinstatement is supported by reductions in the spectral power of alpha/beta activity. Given that the amount of information that can be recalled depends on the amount of information that was originally encoded, information-based accounts of alpha/beta activity would suggest that retrieval-related alpha/beta power decreases similarly depend upon decreases in alpha/beta power during encoding. To test this hypothesis, seventeen human participants completed a sequence-learning task while undergoing concurrent MEG recordings. Regression-based analyses were then used to estimate how alpha/beta power decreases during encoding predicted alpha/beta power decreases during retrieval on a trial-by-trial basis. When subjecting these parameter estimates to group-level analysis, we find evidence to suggest that retrieval-related alpha/beta (7-15Hz) power decreases fluctuate as a function of encoding-related alpha/beta power decreases. These results suggest that retrieval-related alpha/beta power decreases are contingent on the decrease in alpha/beta power that arose during encoding. Subsequent analysis uncovered no evidence to suggest that these alpha/beta power decreases reflect stimulus identity, indicating that the contingency between encoding- and retrieval-related alpha/beta power reflects the reinstatement of a neurophysiological operation, rather than neural representation, during episodic memory retrieval.
+
+  - slug: griffiths-2020-event-conjunction
+    title: "Event conjunction: How the hippocampus integrates episodic memories across event boundaries"
+    authors: ["Griffiths, Benjamin J.", "Fuentemilla, Lluís"]
+    journal: Hippocampus
+    volume: "30"
+    issue: "2"
+    first_page: "162"
+    last_page: "171"
+    date: 2020-02            # issue date (online 2019-09-30)
+    doi: 10.1002/hipo.23161
+    journal_url: https://onlinelibrary.wiley.com/doi/abs/10.1002/hipo.23161
+    preprint_url: https://doi.org/10.31234/osf.io/v47n2
+    abstract: >
+      Our lives are a continuous stream of experience. Our episodic memories on the other hand have a definitive beginning, middle, and end. Theories of event segmentation suggest that salient changes in our environment produce event boundaries which partition the past from the present and, as a result, produce discretised memories. However, event boundaries cannot completely discretise two memories; any shared conceptual link will lead to the rapid integration of these memories. Here, we present a new framework inspired by electrophysiological research that resolves this apparent contradiction. At its heart, the framework proposes that hippocampal theta‐gamma coupling maintains a highly abstract model of an ongoing event and serves to encode this model as an episodic memory. When a second but related event begins, this theta‐gamma model is rapidly reconstructed within the hippocampus where new details of the second event can be appended to the existing event model. The event conjunction framework is the first electrophysiological explanation of how event memories can be formed at, and integrated across, event boundaries.
+
+  - slug: griffiths-2019-alpha-fidelity
+    title: Alpha/beta power decreases track the fidelity of stimulus-specific information
+    authors: ["Griffiths, Benjamin J.", "Mayhew, Stephen D.", "Mullinger, Karen J.", "Jorge, João", "Charest, Ian", "Wimber, Maria", "Hanslmayr, Simon"]
+    journal: eLife
+    volume: "8"
+    article_number: e49562
+    date: 2019-11-29
+    doi: 10.7554/eLife.49562
+    journal_url: https://elifesciences.org/articles/49562
+    preprint_url: https://doi.org/10.1101/633107
+    drive_id: 1TP3fmvC1x-TIUO5IVtO4bFlibN2UAFWY
+    abstract: >
+      Massed synchronised neuronal firing is detrimental to information processing. When networks of task-irrelevant neurons fire in unison, they mask the signal generated by task-critical neurons. On a macroscopic level, such synchronisation can contribute to alpha/beta (8–30 Hz) oscillations. Reducing the amplitude of these oscillations, therefore, may enhance information processing. Here, we test this hypothesis. Twenty-one participants completed an associative memory task while undergoing simultaneous EEG-fMRI recordings. Using representational similarity analysis, we quantified the amount of stimulus-specific information represented within the BOLD signal on every trial. When correlating this metric with concurrently-recorded alpha/beta power, we found a significant negative correlation which indicated that as post-stimulus alpha/beta power decreased, stimulus-specific information increased. Critically, we found this effect in three unique tasks: visual perception, auditory perception, and visual memory retrieval, indicating that this phenomenon transcends both stimulus modality and cognitive task. These results indicate that alpha/beta power decreases parametrically track the fidelity of both externally-presented and internally-generated stimulus-specific information represented within the cortex.
+
+  - slug: griffiths-2019-directional-coupling
+    title: Directional coupling of slow and fast hippocampal gamma with neocortical alpha/beta oscillations in human episodic memory
+    authors: ["Griffiths, Benjamin J.", "Parish, George", "Roux, Frederic", "Michelmann, Sebastian", "van der Plas, Mircea", "Kolibius, Luca D.", "Chelvarajah, Ramesh", "Rollings, David T.", "Sawlani, Vijay", "Hamer, Hajo", "Gollwitzer, Stephanie", "Kreiselmeyer, Gernot", "Staresina, Bernhard", "Wimber, Maria", "Hanslmayr, Simon"]
+    journal: Proceedings of the National Academy of Sciences
+    volume: "116"
+    issue: "43"
+    first_page: "21834"
+    last_page: "21842"
+    date: 2019-10-09
+    doi: 10.1073/pnas.1914180116
+    journal_url: https://www.pnas.org/doi/10.1073/pnas.1914180116
+    drive_id: 1Md7EXeSfyndg0KHTAw3_tYYIB09iIsXF
+    abstract: >
+      Episodic memories hinge upon our ability to process a wide range of multisensory information and bind this information into a coherent, memorable representation. On a neural level, these 2 processes are thought to be supported by neocortical alpha/beta desynchronization and hippocampal theta/gamma synchronization, respectively. Intuitively, these 2 processes should couple to successfully create and retrieve episodic memories, yet this hypothesis has not been tested empirically. We address this by analyzing human intracranial electroencephalogram data recorded during 2 associative memory tasks. We find that neocortical alpha/beta (8 to 20 Hz) power decreases reliably precede and predict hippocampal “fast” gamma (60 to 80 Hz) power increases during episodic memory formation; during episodic memory retrieval, however, hippocampal “slow” gamma (40 to 50 Hz) power increases reliably precede and predict later neocortical alpha/beta power decreases. We speculate that this coupling reflects the flow of information from the neocortex to the hippocampus during memory formation, and hippocampal pattern completion inducing information reinstatement in the neocortex during memory retrieval.
+
+  - slug: griffiths-2017-reward-punishment
+    title: Opposing effects of reward and punishment on human vigor
+    authors: ["Griffiths, Benjamin", "Beierholm, Ulrik R."]
+    journal: Scientific Reports
+    volume: "7"
+    article_number: "42287"
+    date: 2017-02-13
+    doi: 10.1038/srep42287
+    journal_url: https://www.nature.com/articles/srep42287
+    drive_id: 1hHRo24j04OOi_xl5yH7MyR9Be3v6gJh_
+    abstract: >
+      The vigor with which humans and animals engage in a task is often a determinant of the likelihood of the task’s success. An influential theoretical model suggests that the speed and rate at which responses are made should depend on the availability of rewards and punishments. While vigor facilitates the gathering of rewards in a bountiful environment, there is an incentive to slow down when punishments are forthcoming so as to decrease the rate of punishments, in conflict with the urge to perform fast to escape punishment. Previous experiments confirmed the former, leaving the latter unanswered. We tested the influence of punishment in an experiment involving economic incentives and contrasted this with reward related behavior on the same task. We found that behavior corresponded with the theoretical model; while instantaneous threat of punishment caused subjects to increase the vigor of their response, subjects’ response times would slow as the overall rate of punishment increased. We quantitatively show that this is in direct contrast to increases in vigor in the face of increased overall reward rates. These results highlight the opposed effects of rewards and punishments and provide further evidence for their roles in the variety of types of human decisions.
+
+  - slug: griffiths-2016-real-world
+    title: Brain oscillations track the formation of episodic memories in the real world
+    authors: ["Griffiths, Benjamin", "Mazaheri, Ali", "Debener, Stefan", "Hanslmayr, Simon"]
+    journal: NeuroImage
+    volume: "143"
+    first_page: "256"
+    last_page: "266"
+    date: 2016-12
+    doi: 10.1016/j.neuroimage.2016.09.021
+    journal_url: https://www.sciencedirect.com/science/article/abs/pii/S1053811916304840
+    preprint_url: https://doi.org/10.1101/042929
+    abstract: >
+      Despite the well-known influence of environmental context on episodic memory, little has been done to increase contextual richness within the lab. This leaves a blind spot lingering over the neuronal correlates of episodic memory formation in day-to-day life. To address this, we presented participants with a series of words to memorise along a pre-designated route across campus while a mobile EEG system acquired ongoing neural activity. Replicating lab-based subsequent memory effects (SMEs), we identified significant low to mid frequency power decreases (<30 Hz), including beta power decreases over the left inferior frontal gyrus. When investigating the oscillatory correlates of temporal and spatial context binding, we found that items strongly bound to spatial context exhibited significantly greater theta power decreases than items strongly bound to temporal context. These findings expand upon lab-based studies by demonstrating the influence of real world contextual factors that underpin memory formation.
+
+  # ── Added by match_pdfs.py — check, then delete each `verify: true` ──
+
+  - slug: griffiths-2026-comparing-electrical
+    title: Comparing electrical and ultrasound transcutaneous auricular vagus nerve stimulation on associative memory
+    authors:
+    - Griffiths, Benjamin J.
+    - He, Ziqi
+    - Ciftepinar, Irem
+    - Choi, Hyuk
+    - Song, Jae-Jun
+    - Kaiser, Marcus
+    - Jung, JeYoung
+    journal: 'Neuromodulation: Technology at the Neural Interface'
+    date: 2026-07
+    doi: 10.1016/j.neurom.2026.07.001
+    journal_url: https://linkinghub.elsevier.com/retrieve/pii/S1094715926006604
+    verify: true
+    abstract: >
+      Associative memory, the ability to bind and retrieve relationships between unrelated elements, is a cornerstone of human cognition and a primary target for neurorehabilitation. Vagus nerve stimulation (VNS) has emerged as a promising method to modulate the locus coeruleus-norepinephrine system and hippocampal-prefrontal circuits essential for memory. However, the comparative efficacy of noninvasive modalities such as electrical transcutaneous VNS (E-taVNS) and the emerging field of ultrasound (U-taVNS) remains poorly understood in the context of active recall. In this study, participants performed a cross-modal video–word associative memory task before and after receiving either E-taVNS or U-taVNS in active and sham conditions. We investigated whether these modalities enhance cued recall accuracy and retrieval reaction time. Our results revealed that neither E-taVNS nor U-taVNS significantly improved recall accuracy. However, E-taVNS significantly accelerated response times specifically for correctly recalled items. These findings suggest that although taVNS may not increase the likelihood of recalling associative memories after a brief retention interval, electrical stimulation may enhance the efficiency with which we do so. These findings suggest that E-taVNS is a viable tool for facilitating memory processes, although further research is required to optimize ultrasound parameters and validate mechanistic pathways through physiologic monitoring.
+
+  - slug: lifanov-carr-2024-reconstructing-spatiotemporal
+    title: Reconstructing spatiotemporal trajectories of visual object memories in the human brain
+    authors:
+    - Lifanov-Carr, Julia
+    - Griffiths, Benjamin J.
+    - Linde-Domingo, Juan
+    - Ferreira, Catarina S.
+    - Wilson, Martin
+    - Mayhew, Stephen D.
+    - Charest, Ian
+    - Wimber, Maria
+    journal: eNeuro
+    volume: '11'
+    issue: '9'
+    article_number: ENEURO.0091-24.2024
+    date: 2024-09
+    doi: 10.1523/eneuro.0091-24.2024
+    journal_url: https://www.eneuro.org/lookup/doi/10.1523/ENEURO.0091-24.2024
+    verify: true
+    abstract: >
+      How the human brain reconstructs, step-by-step, the core elements of past experiences is still unclear. Here, we map the spatiotemporal trajectories along which visual object memories are reconstructed during associative recall. Specifically, we inquire whether retrieval reinstates feature representations in a copy-like but reversed direction with respect to the initial perceptual experience, or alternatively, this reconstruction involves format transformations and regions beyond initial perception. Participants from two cohorts studied new associations between verbs and randomly paired object images, and subsequently recalled the objects when presented with the corresponding verb cue. We first analyze multivariate fMRI patterns to map where in the brain high- and low-level object features can be decoded during perception and retrieval, showing that retrieval is dominated by conceptual features, represented in comparatively late visual and parietal areas. A separately acquired EEG dataset is then used to track the temporal evolution of the reactivated patterns using similarity-based EEG–fMRI fusion. This fusion suggests that memory reconstruction proceeds from anterior frontotemporal to posterior occipital and parietal regions, in line with a conceptual-to-perceptual gradient but only partly following the same trajectories as during perception. Specifically, a linear regression statistically confirms that the sequential activation of ventral visual stream regions is reversed between image perception and retrieval. The fusion analysis also suggests an information relay to frontoparietal areas late during retrieval. Together, the results shed light onto the temporal dynamics of memory recall and the transformations that the information undergoes between the initial experience and its later reconstruction from memory.
+
+  - slug: michelmann-2018-data-driven
+    title: Data-driven re-referencing of intracranial EEG based on independent component analysis (ICA)
+    authors:
+    - Michelmann, Sebastian
+    - Treder, Matthias S.
+    - Griffiths, Benjamin
+    - Kerrén, Casper
+    - Roux, Frédéric
+    - Wimber, Maria
+    - Rollings, David
+    - Sawlani, Vijay
+    - Chelvarajah, Ramesh
+    - Gollwitzer, Stephanie
+    - Kreiselmeyer, Gernot
+    - Hamer, Hajo
+    - Bowman, Howard
+    - Staresina, Bernhard
+    - Hanslmayr, Simon
+    journal: Journal of Neuroscience Methods
+    volume: '307'
+    first_page: '125'
+    last_page: '137'
+    date: 2018-09
+    doi: 10.1016/j.jneumeth.2018.06.021
+    journal_url: https://linkinghub.elsevier.com/retrieve/pii/S0165027018301997
+    verify: true
+    abstract: >
+      Intracranial recordings from patients implanted with depth electrodes are a valuable source of information in neuroscience. They allow for the unique opportunity to record brain activity with high spatial and temporal resolution. A common pre-processing choice in stereotactic EEG (S-EEG) is to re-reference the data with a bipolar montage. In this, each channel is subtracted from its neighbor, to reduce commonalities between channels and isolate activity that is spatially confined. We challenge the assumption that bipolar reference effectively performs this task. To extract local activity, the distribution of the signal source of interest, interfering distant signals, and noise need to be considered. Referencing schemes with fixed coefficients can decrease the signal to noise ratio (SNR) of the data, they can lead to mislocalization of activity and consequently to misinterpretation of results. We propose to use Independent Component Analysis (ICA), to derive filter coefficients that reflect the statistical dependencies of the data at hand. We describe and demonstrate this on human S-EEG recordings. In a simulation with real data, we quantitatively show that ICA outperforms the bipolar referencing operation in sensitivity and importantly in specificity when revealing local time series from the superposition of neighboring channels. We argue that ICA already performs the same task that bipolar referencing pursues, namely undoing the linear superposition of activity and will identify activity that is local. When investigating local sources in human S-EEG, ICA should be preferred over re-referencing the data with a bipolar montage.
+
+  - slug: duecker-2025-guided-visual
+    title: Guided visual search is associated with target boosting and distractor suppression in early visual cortex
+    authors:
+    - Duecker, Katharina
+    - Shapiro, Kimron L.
+    - Hanslmayr, Simon
+    - Griffiths, Benjamin J.
+    - Pan, Yali
+    - Wolfe, Jeremy M.
+    - Jensen, Ole
+    journal: Communications Biology
+    volume: '8'
+    issue: '1'
+    article_number: '912'
+    date: '2025-06-11'
+    doi: 10.1038/s42003-025-08321-3
+    journal_url: https://www.nature.com/articles/s42003-025-08321-3
+    verify: true
+    abstract: >
+      Visual attention paradigms have revealed that neural excitability in higher-order visual areas is modulated according to a priority map guiding attention towards task-relevant locations. Neural activity in early visual regions, however, has been argued to be modulated based on bottom-up salience. Here, we combined Magnetoencephalography (MEG) and Rapid Invisible Frequency Tagging (RIFT) in a classic visual search paradigm to study feature-guidance in early human visual cortex. Our results demonstrate evidence for both target boosting and distractor suppression when the participants were informed about the task-relevant and -irrelevant colour (guided search) compared to when they were not (unguided search). These results conceptually replicated using both a magnitude-squared coherence approach and a General Linear Model based on a single-trial measure of the RIFT response. The present findings reveal that feature-guidance in visual search affects neuronal excitability as early as primary visual cortex, possibly contributing to a priority-map-based mechanism.
+
+  - slug: schreiner-2024-spindle-ripples
+    title: Spindle-locked ripples mediate memory reactivation during human NREM sleep
+    authors: ["Schreiner, Thomas", "Griffiths, Benjamin J.", "Kutlu, Merve", "Vollmar, Christian", "Kaufmann, Elisabeth", "Quach, Stefanie", "Remi, Jan", "Noachtar, Soheyl", "Staudigl, Tobias"]
+    journal: Nature Communications
+    volume: "15"
+    article_number: "5249"
+    date: 2024-06          # day not confirmed
+    doi: 10.1038/s41467-024-49572-8
+    journal_url: https://www.nature.com/articles/s41467-024-49572-8
+    preprint_url: https://www.biorxiv.org/content/10.1101/2023.01.27.525854
+    verify: true
+    abstract: >
+      Memory consolidation relies in part on the reactivation of previous experiences during sleep. The precise interplay of sleep-related oscillations (slow oscillations, spindles and ripples) is thought to coordinate the information flow between relevant brain areas, with ripples mediating memory reactivation. However, in humans empirical evidence for a role of ripples in memory reactivation is lacking. Here, we investigated the relevance of sleep oscillations and specifically ripples for memory reactivation during human sleep using targeted memory reactivation. Intracranial electrophysiology in epilepsy patients and scalp EEG in healthy participants revealed that elevated levels of slow oscillation - spindle activity coincided with the read-out of experimentally induced memory reactivation. Importantly, spindle-locked ripples recorded intracranially from the medial temporal lobe were found to be correlated with the identification of memory reactivation during non-rapid eye movement sleep. Our findings establish ripples as key-oscillation for sleep-related memory reactivation in humans and emphasize the importance of the coordinated interplay of the cardinal sleep oscillations.
+
+  - slug: kerren-2022-phase-separation
+    title: Phase separation of competing memories along the human hippocampal theta rhythm
+    authors: ["Kerrén, Casper", "van Bree, Sander", "Griffiths, Benjamin J.", "Wimber, Maria"]
+    journal: eLife
+    volume: "11"
+    article_number: e80633
+    date: 2022-11-17
+    doi: 10.7554/eLife.80633
+    journal_url: https://elifesciences.org/articles/80633
+    abstract: >
+      Competition between overlapping memories is considered one of the major causes of forgetting, and it is still unknown how the human brain resolves such mnemonic conflict. In the present magnetoencephalography (MEG) study, we empirically tested a computational model that leverages an oscillating inhibition algorithm to minimise overlap between memories. We used a proactive interference task, where a reminder word could be associated with either a single image (non-competitive condition) or two competing images, and participants were asked to always recall the most recently learned word–image association. Time-resolved pattern classifiers were trained to detect the reactivated content of target and competitor memories from MEG sensor patterns, and the timing of these neural reactivations was analysed relative to the phase of the dominant hippocampal 3 Hz theta oscillation. In line with our pre-registered hypotheses, target and competitor reactivations locked to different phases of the hippocampal theta rhythm after several repeated recalls. Participants who behaviourally experienced lower levels of interference also showed larger phase separation between the two overlapping memories. The findings provide evidence that the temporal segregation of memories, orchestrated by slow oscillations, plays a functional role in resolving mnemonic competition by separating and prioritising relevant memories under conditions of high interference.
+
+  - slug: griffiths-2023-eye-tracking-ieeg
+    title: Why and how should I track eye-movements during iEEG recordings?
+    authors: ["Griffiths, Benjamin J.", "Staudigl, Tobias"]
+    journal: "Intracranial EEG: A Guide for Cognitive Neuroscientists (Springer)"
+    first_page: "217"
+    last_page: "237"
+    date: 2023
+    doi: 10.1007/978-3-031-20910-9_14     # from a citation index, not Springer itself
+    journal_url: https://doi.org/10.1007/978-3-031-20910-9_14
+    preprint_url: https://doi.org/10.31234/osf.io/7pyk9
+    verify: true
+    abstract: >
+      We are visual animals. How we perceive, understand and interact with the world is intimately tied to our visual sense. Yet, the value of monitoring ocular activity in neuroscientific experiments is often overlooked. In this chapter, we set out to highlight how a whole host of ocular phenomena relate to brain function and human cognition, with a special focus on intracranial electroencephalogram (iEEG) recordings. We begin by describing key ocular events, such as saccades and fixations, before discussing the extensive impact these ocular events have on common neural phenomenon and measurable behaviour. Lastly, we provide practical recommendations for combining eye tracking and intracranial EEG in neuroscientific research.
+
+  - slug: michelmann-2022-alpha-beta-chapter
+    title: The role of alpha and beta oscillations in the human EEG during perception and memory processes
+    authors: ["Michelmann, Sebastian", "Griffiths, Benjamin", "Hanslmayr, Simon"]
+    journal: The Oxford Handbook of EEG Frequency (Oxford University Press)
+    first_page: "202"
+    last_page: "219"
+    date: 2022
+    doi: 10.1093/oxfordhb/9780192898340.013.10
+    journal_url: https://doi.org/10.1093/oxfordhb/9780192898340.013.10
+    verify: true
+    abstract: >
+      Traditionally alpha and beta oscillations have been viewed a passive phenomenon, being active only when our minds are idling. Empirical evidence over the last two decades challenged this classic view and suggests that alpha/beta play a much more active role during cognitive processes. In the human brain alpha oscillations influence processing of large neural ensembles by regulating the strength of synchronization within these ensembles and by providing discrete time windows for firing. With EEG recordings we can observe these two mechanisms via modulations of the signal strength (i.e. power) and modulations of phase, respectively. In this chapter we focus on these two signal properties of alpha/beta oscillations and review studies that investigated the relevance of alpha power and phase modulations in tasks involving perception and memory processes. These studies reveal a reduction in alpha/beta power when a stimulus is being perceived or mentally replayed. Furthermore, alpha phase reflects rhythmical sampling of stimulus information during perception, and the replay of that information during retrieval. Based on these findings, we argue that alpha oscillations play an active role in representing information-rich content in the brain. Importantly, alpha/beta oscillations perform this function regardless of whether the information is being presented externally, as is the case in perception, or whether it is being generated internally, as is the case in memory retrieval.
+
+  - slug: cesnaite-2025-eegmanypipelines
+    title: "The EEGManyPipelines dataset: Metascientific data on 168 independent analyses of a single EEG dataset"
+    authors: ["Cesnaite, Elena", "Vitale, Andrea", "Pascarella, Annalisa", "EEGManyPipelines Consortium"]
+    journal: MetaArXiv
+    preprint: true
+    date: 2025-12-03
+    doi: 10.31222/osf.io/c4xwg_v1
+    journal_url: https://doi.org/10.31222/osf.io/c4xwg_v1
+    verify: true
+    abstract: >
+      There is a growing need for large-scale, global studies in response to the replication crisis, which has raised concerns across many scientific fields and prompted efforts to understand the sources of variability in research outcomes. Here we describe the EEGManyPipelines dataset: a many-analyst study aiming to examine how differences in electrophysiology (EEG) data analysis may contribute to differences in the results. We describe data shared and analyzed by 168 analyst teams. The original shared raw data consisted of behavioral data and EEG recordings of 33 participants performing a long-term memory task, together with 8 hypotheses regarding event-related potentials and time-frequency effects. Analyst teams also provided meta-scientific data detailing analysts' approach to hypotheses: processed EEG data, scripts, and answers to questionnaires. We propose this unique dataset for future use to study analytical flexibility, research culture, and scientific decision-making. It offers a valuable tool for meta-scientific, global and multicenter studies, EEG methodology, and reproducibility studies.
