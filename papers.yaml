@@ -414,3 +414,12 @@ papers:
     verify: true
     abstract: >
       There is a growing need for large-scale, global studies in response to the replication crisis, which has raised concerns across many scientific fields and prompted efforts to understand the sources of variability in research outcomes. Here we describe the EEGManyPipelines dataset: a many-analyst study aiming to examine how differences in electrophysiology (EEG) data analysis may contribute to differences in the results. We describe data shared and analyzed by 168 analyst teams. The original shared raw data consisted of behavioral data and EEG recordings of 33 participants performing a long-term memory task, together with 8 hypotheses regarding event-related potentials and time-frequency effects. Analyst teams also provided meta-scientific data detailing analysts' approach to hypotheses: processed EEG data, scripts, and answers to questionnaires. We propose this unique dataset for future use to study analytical flexibility, research culture, and scientific decision-making. It offers a valuable tool for meta-scientific, global and multicenter studies, EEG methodology, and reproducibility studies.
+
+# ── Tutorials ────────────────────────────────────────────────
+# Listed under "Tutorials", below the papers, on the home page.
+#  title  as shown
+#  url    a path on this site, without a leading slash (the tutorial's files go in
+#         static/<path>), or a full address
+tutorials:
+  - title: Understanding EEG Preprocessing
+    url: tutorials/understanding-eeg-preprocessing/

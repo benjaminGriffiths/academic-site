@@ -163,8 +163,25 @@ def email_html(site):
             f'{e(user)} [at] {e(dom)}</a></p>')
 
 
+def tutorials_html(tutorials):
+    """The home page's Tutorials section: one numbered title per tutorial, in the paper-title
+    style, the number standing where a paper's year goes."""
+    if not tutorials:
+        return ""
+    rows = "\n".join(f"""<li>
+  <span class="yr">{i}.</span>
+  <div><a class="ttl" href="{e(t['url'])}">{e(t['title'])}</a></div>
+</li>""" for i, t in enumerate(tutorials, start=1))
+    return f"""
+    <h2 class="label" id="tutorials">tutorials</h2>
+    <ul class="papers">
+{rows}
+    </ul>
+"""
+
+
 # ── home page ────────────────────────────────────────────────────────────────
-def home(site, papers):
+def home(site, papers, tutorials=()):
     rows = []
     prev_year = None
     for p in papers:
@@ -229,6 +246,7 @@ def home(site, papers):
     <ul class="papers">
 {chr(10).join(rows)}
     </ul>
+{tutorials_html(tutorials)}
 
 
     <footer>updated {dt.date.today().strftime('%B %Y')}</footer>
@@ -363,7 +381,8 @@ def main():
     if STATIC.exists():
         shutil.copytree(STATIC, OUT, dirs_exist_ok=True)
 
-    (OUT / "index.html").write_text(home(site, papers), encoding="utf-8")
+    (OUT / "index.html").write_text(home(site, papers, cfg.get("tutorials") or []),
+                                    encoding="utf-8")
     for p in papers:
         d = OUT / "papers" / p["slug"]
         d.mkdir(parents=True)

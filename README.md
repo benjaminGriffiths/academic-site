@@ -6,7 +6,7 @@ A plain static site. Everything comes from `papers.yaml`. Push to GitHub and it 
 
 | Path | What it is |
 |---|---|
-| `papers.yaml` | Your details and every paper. The only file you normally edit. |
+| `papers.yaml` | Your details, every paper and every tutorial. The only file you normally edit. |
 | `pdfs/<slug>.pdf` | PDFs to host. The file name must match the paper's `slug`. |
 | `static/` | Copied to the site root: `headshot.jpg`, `cv.pdf`, CSS, favicon. |
 | `build.py` | Generates `_site/`. |
@@ -30,6 +30,10 @@ Keep `base_url` as your own domain. Scholar keys on URLs, so moving domains late
 ## Adding a paper
 
 Copy an entry in `papers.yaml`, fill it in, drop `pdfs/<slug>.pdf` in place and push. That's all.
+
+## Adding a tutorial
+
+Put the tutorial's files in `static/tutorials/<name>/`, add an entry under `tutorials:` at the end of `papers.yaml` with its title and `url: tutorials/<name>/`, and push. It appears under "Tutorials", below the papers, on the home page.
 
 ## Before hosting a PDF
 
