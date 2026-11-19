@@ -64,17 +64,19 @@ papers:
     abstract: >
       By definition, episodic memory is a conscious phenomenon. Memory traces reactivated by the hippocampus and reinstated in the sensory cortices need to enter conscious awareness for them to be re-experienced and overtly recalled. However, it remains unclear whether such reactivation in-and-of-itself ensures that memories will be overtly recalled. To investigate this, magnetoencephalography (MEG) recordings were analysed from thirty-one participants (18 female, 13 male) completing a video-word pair associates memory task. When combining linear classifiers and spectral analyses, sensory cortical reactivation could be observed without overt recall occurring, suggesting reactivation does not guarantee overt recall. Instead, overt recall was additively predicted by (i) an increase in reactivated representations rhythmically fluctuating within the alpha band, and (ii) a decrease in total sensory neocortical alpha power. These results are consistent with accounts which propose that reactivation benefits from desynchronising the network to provide representational space for stimulus-specific information, and/or amplifying stimulus-specific information above residual noise. Altogether, these results suggest that representational reactivation can occur without overt recall, and suggest a role for alpha oscillations in projecting internally-generated representations into conscious awareness.
 
-  - slug: griffiths-2025-rhythmic-light
-    title: Rhythmic light stimulation elicits multiple, concurrent neural responses that separably shape human perception
+  - slug: griffiths-2026-rhythmic-light
+    title: Rhythmic stimulation elicits multiple, concurrent neural responses
     authors: ["Griffiths, Benjamin J.", "Duecker, Katharina", "Fakche, Camille", "Dugué, Laura", "Quinn, Andrew", "Jensen, Ole"]
-    journal: bioRxiv
-    preprint: true
-    date: 2025-11-06
-    doi: 10.1101/2025.11.05.686709
-    journal_url: https://www.biorxiv.org/content/10.1101/2025.11.05.686709v1
-    drive_id: 1lJP_LBSE7qm4uRApJwFQqQe9TuyTlW3O
+    journal: Cerebral Cortex
+    volume: "36"
+    issue: "9"
+    article_number: bhag152
+    date: 2026-09-22
+    doi: 10.1093/cercor/bhag152
+    journal_url: https://academic.oup.com/cercor/article/36/9/bhag152/8828956
+    preprint_url: https://doi.org/10.1101/2025.11.05.686709
     abstract: >
-      Rhythmic light stimulation offers solutions to innumerable cognitive and neurological disorders. However, like any neuromodulatory technique, responses to rhythmic light stimulation are highly variable, producing challenges in replicating lab-based studies and translating findings to the clinic. Across three MEG/EEG experiments, we show that this variability can, in part, be attributed to rhythmic light stimulation eliciting multiple, coexisting neural responses which have separable impacts on cognition. Specifically, we find that rhythmic light stimulation produces distinct neural responses at the fundamental (f) and second harmonic (2f) frequencies, and that these responses are differentially shaped by endogenous oscillatory dynamics that vary across participants. Importantly, these responses separably contribute to perception, with harmonic gamma-band responses supporting the representation of stimulus-specific information, and the phase of harmonic alpha-band responses causally contributing to near-threshold visual perception. We reproduce these effects across datasets, paradigms, and oscillatory bands, suggesting that the multiplex oscillatory responses elicited by rhythmic light stimulation are a robust and pervasive phenomenon. We propose that the complexity of neural responses to rhythmic stimulation can explain why there is substantial variability between studies using these techniques, and that understanding these complex responses may help advance neuromodulatory technologies for both fundamental and clinical neuroscience.
+      Rhythmic light stimulation offers solutions to innumerable cognitive and neurological disorders. However, like any neuromodulatory technique, responses to rhythmic light stimulation are highly variable, producing challenges in replicating lab-based studies and translating findings to the clinic. Across 3 magnetoencephalography (MEG) and electroencephalography (EEG) experiments, we show that this variability can, in part, be attributed to rhythmic light stimulation eliciting multiple, coexisting neural responses which have separable influences on behavior. Specifically, we find that rhythmic light stimulation produces neural responses at both the fundamental (f ) and second harmonic (2f ) frequencies, and that these responses are differentially shaped by endogenous oscillatory dynamics that vary across participants. Importantly, these harmonic responses separably contribute to perception, with gamma-band responses supporting the representation of stimulus-specific information, and alpha-band responses causally contributing to near-threshold visual perception. We reproduce these effects across datasets, paradigms, and oscillatory bands, suggesting that the multiple, concurrent oscillatory responses elicited by rhythmic light stimulation are a robust and pervasive phenomenon. We propose that the complexity of neural responses to rhythmic stimulation can explain why there is substantial variability between studies using these techniques, and that understanding these complex responses may help advance neuromodulatory technologies for both fundamental and clinical neuroscience.
 
   - slug: kerren-2025-dimensionality
     title: Exploring the role of dimensionality transformation in episodic memory
